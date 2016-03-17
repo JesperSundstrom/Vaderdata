@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "views", "views", "{D4133749
 	ProjectSection(SolutionItems) = preProject
 		DataPage.html = DataPage.html
 		index.html = index.html
+		VäderStationExempel.html = VäderStationExempel.html
 	EndProjectSection
 EndProject
 Global
