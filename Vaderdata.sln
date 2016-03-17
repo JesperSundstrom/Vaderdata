@@ -4,13 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\GitHub\Vaderdata\index.html = ..\..\..\GitHub\Vaderdata\index.html
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "style", "style", "{2A413C83-CA2E-4EFD-8888-7DA8354F5BEA}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\GitHub\Vaderdata\style\style.css = ..\..\..\GitHub\Vaderdata\style\style.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "views", "views", "{D4133749-1697-49D9-9087-19CC685CE6DB}"
+	ProjectSection(SolutionItems) = preProject
+		DataPage.html = DataPage.html
+		index.html = index.html
 	EndProjectSection
 EndProject
 Global
@@ -19,5 +22,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A413C83-CA2E-4EFD-8888-7DA8354F5BEA} = {1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}
+		{D4133749-1697-49D9-9087-19CC685CE6DB} = {1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}
 	EndGlobalSection
 EndGlobal
