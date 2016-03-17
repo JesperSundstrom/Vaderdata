@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    This is a first test with real sensors.<br>Wind speed, wind direction, gust speed<br>water and air temperature are measured.<br>The goal is to locate the weather station in Grythem at lake Hjalmaren and<br>present (near) real time data (every 10 minutes or so) on internet
+    <!--EXEMPEL 1   Om du kan försök gör datastrukturen på detta sätt:
+        
+        Om du kan separera enheterna från värdet så att vi kan hämta datat lättare
+        
+        -->
+
+    <h5>Wind speed =</h5>
+    <data id="windSpeed" value="0.10">0.10m/s</data>
+
+    <h5>Wind direction =</h5>
+    <data id="windDirection" value="32">32 deg.</data>
+   
+    <h5>Gust speed =</h5>
+    <data id="gustSpeed"value="0.11">0.11m/s</data>
+
+    <h5>Air temp =</h5>
+    <data id="airTemp" value="20.5">20.5 deg. C</data>
+
+    <h5>Water temp =</h5>
+    <data id="water" value="20.25">20.25 deg. C</data>
+
+    <h5>Battery =</h5>
+    <data id="battery" value="93">93%</data>
+
+    <h5>Latest update =</h5>
+    <data value="2016-03-11  08:31:13">2016-03-11  08:31:13</data>
+
+    <!------------------------------------------------------------------
+       EXEMPEL 2   Eller om det är för krånglit lägg till ett ID på din befintliga kod
+    --------------------------------------------------------------------->
+    <hr />
+
+    <h5>Wind speed =</h5>
+    <p id="windSpeed">0.10m/s</p>
+
+    <h5>Wind direction =</h5>
+    <p id="windDirection">32 deg.</p>
+
+    <h5>Gust speed =</h5>
+    <p id="gustSpeed">0.11m/s</p>
+
+    <h5>Air temp =</h5>
+    <p id="airTemp">20.5 deg. C</p>
+
+    <h5>Water temp =</h5>
+    <p id="water">20.25 deg. C</p>
+
+    <h5>Battery =</h5>
+    <p id="battery">93%</p>
+
+    <h5>Latest update =</h5>
+    <p id="latestUpdate">2016-03-11  08:31:13</p>
+
+</body>
+</html>
