@@ -10,23 +10,35 @@ using VäderAPI.Models;
 namespace VäderAPI.Controllers
 {
     public class weatherController : ApiController
+    
     {
+            
+
         // GET: api/weather       
-        weather[] Weather = new weather[] 
+    
+
+
+     
+        public IEnumerable<weather> Get()
+        {
+            HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");
+
+            var windSpeed = page.DocumentNode.SelectSingleNode("//p[@id='windSpeed']");
+            var windDirection = page.DocumentNode.SelectSingleNode("//p[@id='windDirection']");
+            var gustSpeed = page.DocumentNode.SelectSingleNode("//p[@id='gustSpeed']");
+            var airTemp = page.DocumentNode.SelectSingleNode("//p[@id='airTemp']");
+
+
+            string windSpeedValue = windSpeed.InnerText;
+
+            weather[] Weather = new weather[] 
         { 
-
-
-            new weather { Id = 1, windSpeed = "Tomato Soup", windDirection = "Groceries"}
+            new weather { Id = 1, windSpeed = windSpeedValue, windDirection = "Groceries"}
         };
 
 
-
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-
+            return Weather;
         }
-
         // GET: api/weather/5
         public string Get(int id)
         {
