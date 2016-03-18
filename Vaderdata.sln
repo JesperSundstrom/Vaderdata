@@ -12,9 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "style", "style", "{2A413C83
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "views", "views", "{D4133749-1697-49D9-9087-19CC685CE6DB}"
 	ProjectSection(SolutionItems) = preProject
-		DataPage.html = DataPage.html
 		index.html = index.html
 		VäderStationExempel.html = VäderStationExempel.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{9F3A4242-6646-4D08-8730-3BCECB279C06}"
+	ProjectSection(SolutionItems) = preProject
+		scrape.js = scrape.js
 	EndProjectSection
 EndProject
 Global
@@ -24,5 +28,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2A413C83-CA2E-4EFD-8888-7DA8354F5BEA} = {1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}
 		{D4133749-1697-49D9-9087-19CC685CE6DB} = {1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}
+		{9F3A4242-6646-4D08-8730-3BCECB279C06} = {1DDE2AA9-BC9D-47BC-A4D3-B3CC23F2C276}
 	EndGlobalSection
 EndGlobal
