@@ -1,0 +1,69 @@
+﻿@model IEnumerable<VäderAPI.Models.weather>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.windSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.windDirection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gustSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.airTemp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.waterTemp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.battery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastUpdate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.windSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.windDirection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gustSpeed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.airTemp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.waterTemp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.battery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastUpdate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

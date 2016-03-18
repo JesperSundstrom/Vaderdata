@@ -15,7 +15,7 @@ namespace VäderAPI.Controllers
             
 
         // GET: api/weather       
-    
+
 
 
         public IEnumerable<weather> Get()
@@ -26,13 +26,16 @@ namespace VäderAPI.Controllers
             var windDirection = page.DocumentNode.SelectSingleNode("//p[@id='windDirection']");
             var gustSpeed = page.DocumentNode.SelectSingleNode("//p[@id='gustSpeed']");
             var airTemp = page.DocumentNode.SelectSingleNode("//p[@id='airTemp']");
+            var water = page.DocumentNode.SelectSingleNode("//p[@id='water']");
+            var latestUpdate = page.DocumentNode.SelectSingleNode("//p[@id='latestUpdate']");
 
 
             string windSpeedValue = windSpeed.InnerText;
 
             weather[] Weather = new weather[] 
         { 
-            new weather { Id = 1, windSpeed = windSpeedValue, windDirection = "Groceries"}
+                        new weather { Id = 1, windSpeed = windSpeedValue, windDirection = "23", airTemp = "10", battery = "99", gustSpeed = "2", lastUpdate = "2016-03-11  08:31:13", waterTemp = "3"},
+
         };
 
 

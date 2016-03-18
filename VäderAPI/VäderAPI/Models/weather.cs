@@ -13,15 +13,15 @@ namespace VäderAPI.Models
 
         public string windDirection { get; set; }
 
-        public decimal gustSpeed { get; set; }
+        public string gustSpeed { get; set; }
 
-        public decimal airTemp { get; set; }
+        public string airTemp { get; set; }
 
-        public decimal waterTemp { get; set; }
+        public string waterTemp { get; set; }
 
-        public decimal battery { get; set; }
+        public string battery { get; set; }
 
-        public decimal lastUpdate { get; set; }
+        public string lastUpdate { get; set; }
 
     }
 }
