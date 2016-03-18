@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <script src="js/jquery-1.12.2.min.js"></script>
+
 </head>
 <body>
     <h1>Väderdata</h1>
@@ -25,5 +27,18 @@
 
     <h5>Latest update =</h5>
     <p id="latestUpdate">2016-03-11  08:31:13</p>
+    <script>
+        $(document).ready(function () {
+            // Send an AJAX request
+            $.getJSON('http://localhost:20728/api/weather')
+                .done(function (data) {
+                    // On success, 'data' contains a list of products.
+                    $.each(data, function (key, item) {
+                        // Add a list item for the product.
+                        $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+                    });
+                });
+        });
+    </script>
 </body>
 </html>
