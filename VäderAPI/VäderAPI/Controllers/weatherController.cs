@@ -22,19 +22,25 @@ namespace VäderAPI.Controllers
         {
             HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");
 
-            var windSpeed = page.DocumentNode.SelectSingleNode("//p[@id='windSpeed']");
-            var windDirection = page.DocumentNode.SelectSingleNode("//p[@id='windDirection']");
-            var gustSpeed = page.DocumentNode.SelectSingleNode("//p[@id='gustSpeed']");
-            var airTemp = page.DocumentNode.SelectSingleNode("//p[@id='airTemp']");
-            var water = page.DocumentNode.SelectSingleNode("//p[@id='water']");
-            var latestUpdate = page.DocumentNode.SelectSingleNode("//p[@id='latestUpdate']");
+            var windSpeed = page.DocumentNode.SelectSingleNode("//p[@id='windSpeed']").InnerText;
+            var windDirection = page.DocumentNode.SelectSingleNode("//p[@id='windDirection']").InnerText;
+            var gustSpeed = page.DocumentNode.SelectSingleNode("//p[@id='gustSpeed']").InnerText;
+            var airTemp = page.DocumentNode.SelectSingleNode("//p[@id='airTemp']").InnerText;
+            var waterTemp = page.DocumentNode.SelectSingleNode("//p[@id='water']").InnerText;
+            var battery = page.DocumentNode.SelectSingleNode("//p[@id='battery']").InnerText;
+            var latestUpdate = page.DocumentNode.SelectSingleNode("//p[@id='latestUpdate']").InnerText;
 
+            windSpeed = windSpeed.Remove(windSpeed.Length - 4);
+            windDirection = windDirection.Remove(windDirection.Length - 5);
+            gustSpeed = gustSpeed.Remove(gustSpeed.Length - 4);
+            airTemp = airTemp.Remove(airTemp.Length - 6);
+            waterTemp = waterTemp.Remove(waterTemp.Length - 7);
+            battery = battery.Remove(battery.Length - 2);
 
-            string windSpeedValue = windSpeed.InnerText;
 
             weather[] Weather = new weather[] 
         { 
-                        new weather { Id = 1, windSpeed = windSpeedValue, windDirection = "23", airTemp = "10", battery = "99", gustSpeed = "2", lastUpdate = "2016-03-11  08:31:13", waterTemp = "3"},
+                        new weather { Id = 1, windSpeed = windSpeed, windDirection = windDirection, airTemp = airTemp, battery = battery, gustSpeed = gustSpeed, lastUpdate = latestUpdate, waterTemp = waterTemp},
 
         };
 
