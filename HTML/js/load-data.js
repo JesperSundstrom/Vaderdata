@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'http://localhost:20728/api/weather',
+        url: 'http://83.255.196.114:25565/api/weather',
         dataType: 'json',
         type: 'get',
         cache: false,
@@ -13,13 +13,13 @@ $(document).ready(function () {
 
             $.each(data, function (key, item) {
                 // Add a list item for the product.
-                $('<li>', { text: "Vindhastighet: " + item.windSpeed + "m/s" }).appendTo($('#products'));
-                $('<li>', { text: "Vindriktning: " + item.windDirection + "°" }).appendTo($('#products'));
-                $('<li>', { text: "Vindpustar: " + item.gustSpeed + "m/s" }).appendTo($('#products'));
-                $('<li>', { text: "Luft temperatur: " + item.airTemp + "° C" }).appendTo($('#products'));
-                $('<li>', { text: "Vatten temperatur: " + item.waterTemp + "° C" }).appendTo($('#products'));
-                $('<li>', { text: "Batteri: " + item.battery + "%" }).appendTo($('#products'));
-                $('<li>', { text: "Senast uppdaterad: " + item.lastUpdate }).appendTo($('#products'));
+                $('<li>', { text: "Vindhastighet: " + item.windSpeed + "m/s" }).appendTo($('#vind'));
+                $('<li>', { text: "Vindriktning: " + item.windDirection + "°" }).appendTo($('#vind'));
+                $('<li>', { text: "Vindpustar: " + item.gustSpeed + "m/s" }).appendTo($('#vind'));
+                $('<li>', { text: "Luft temperatur: "+ item.airTemp + "° C" }).appendTo($('#temp'));
+                $('<li>', { text: "Vatten temperatur: " + item.waterTemp + "° C" }).appendTo($('#temp'));
+                $('<p>', { text: "Batteri: " + item.battery + "%" }).appendTo($('#batteri'));
+                $('<li>', { text: "Senast uppdaterad: " + item.lastUpdate }).appendTo($('#temp'));
 
             })
 

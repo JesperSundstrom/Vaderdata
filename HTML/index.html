@@ -2,12 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
-    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="./js/jquery-1.12.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
+
+
     <h1>Väderdata</h1>
-    <p>asdasd</p>
-    <h1>q123asdaq</h1>
+
+    <div class="section group">
+        <div class="col span_1_of_2">
+                Vind
+            <ul id="vind"></ul>
+        </div>
+        <div class="col span_1_of_2">
+            <ul id="temp"></ul>
+        </div>
+    </div>
+
+
     <div>
         <ul id="products" >
             
@@ -15,6 +28,7 @@
 
         </ul>
     </div>
-    <script src="/Scripts/load-data.js"></script>
+    <div id="batteri"></div>
+    <script src="./js/load-data.js"></script>
 </body>
 </html>
