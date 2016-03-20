@@ -30,12 +30,12 @@ namespace VäderAPI.Controllers
             var battery = page.DocumentNode.SelectSingleNode("//p[@id='battery']").InnerText;
             var latestUpdate = page.DocumentNode.SelectSingleNode("//p[@id='latestUpdate']").InnerText;
 
-            windSpeed = windSpeed.Remove(windSpeed.Length - 4);
-            windDirection = windDirection.Remove(windDirection.Length - 5);
-            gustSpeed = gustSpeed.Remove(gustSpeed.Length - 4);
-            airTemp = airTemp.Remove(airTemp.Length - 6);
-            waterTemp = waterTemp.Remove(waterTemp.Length - 7);
-            battery = battery.Remove(battery.Length - 2);
+            windSpeed = windSpeed.Remove(windSpeed.Length - 5);
+            windDirection = windDirection.Remove(windDirection.Length - 6);
+            gustSpeed = gustSpeed.Remove(gustSpeed.Length - 5);
+            airTemp = airTemp.Remove(airTemp.Length - 7);
+            waterTemp = waterTemp.Remove(waterTemp.Length - 8);
+            battery = battery.Remove(battery.Length - 3);
 
 
             weather[] Weather = new weather[] 
