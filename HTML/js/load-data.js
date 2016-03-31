@@ -18,9 +18,9 @@ $(document).ready(function () {
                 $('<li>', { text: "Vindpustar: " + item.gustSpeed + "m/s" }).appendTo($('#vind'));
                 $('<li>', { text: "Luft temperatur: "+ item.airTemp + "° C" }).appendTo($('#temp'));
                 $('<li>', { text: "Vatten temperatur: " + item.waterTemp + "° C" }).appendTo($('#temp'));
-                $('<p>', { text: "Batteri: " + item.battery + "%" }).appendTo($('#batteri'));
-                $('<li>', { text: "Senast uppdaterad: " + item.lastUpdate }).appendTo($('#temp'));
+                $('#batteri ').text("Batteri: " + item.battery + "%")
 
+                $('#updated ').text(item.lastUpdate)
             })
 
 

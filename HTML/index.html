@@ -6,29 +6,38 @@
     <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
+        <div class="section group">
+            <div class="header col span_2_of_2">
+                <div class="wrapper">
 
+                    <h1>Väderdata från grythem</h1>
+                    <p>Uppdaterad senast <span id="updated"></span></p>
 
-    <h1>Väderdata</h1>
+                </div>
+            </div>
 
-    <div class="section group">
-        <div class="col span_1_of_2">
-                Vind
-            <ul id="vind"></ul>
         </div>
-        <div class="col span_1_of_2">
-            <ul id="temp"></ul>
+    <div class="wrapper">
+
+
+        <div class="section group">
+            <div class="col span_1_of_2">
+                
+                <ul id="vind"></ul>
+            </div>
+            <div class="col span_1_of_2">
+                <ul id="temp"></ul>
+            </div>
         </div>
+        <div class="header  span_2_of_2">
+
+                <h1>Om väderstationen</h1>
+        </div>
+        <p>Hemsidan drivs av en väderstation ute på grytem</p>
+
+      
+        <p id="batteri"></p>
     </div>
-
-
-    <div>
-        <ul id="products" >
-            
-
-
-        </ul>
-    </div>
-    <div id="batteri"></div>
     <script src="./js/load-data.js"></script>
 </body>
 </html>
