@@ -30,7 +30,8 @@ $(document).ready(function () {
         },
 
         error: function (data) {
-            $('<li>', { text: " Datan kunde ej laddas, Försök igen senare eller kontrollera anslutningen" }).appendTo($('#products'));
+            $('#status ').text("Datan kunde ej laddas, Försök igen senare eller kontrollera anslutningen")
+
 
         }
 

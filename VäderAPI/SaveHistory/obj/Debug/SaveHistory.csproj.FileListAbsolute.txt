@@ -1,0 +1,6 @@
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\obj\Debug\SaveHistory.csprojResolveAssemblyReference.cache
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\bin\Debug\SaveHistory.exe.config
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\bin\Debug\SaveHistory.exe
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\bin\Debug\SaveHistory.pdb
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\obj\Debug\SaveHistory.exe
+C:\Users\xjesun26\Documents\GitHub\Vaderdata\VäderAPI\SaveHistory\obj\Debug\SaveHistory.pdb
