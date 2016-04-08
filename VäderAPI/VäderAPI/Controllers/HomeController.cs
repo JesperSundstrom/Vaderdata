@@ -11,6 +11,7 @@ namespace VäderAPI.Controllers
     {
         public ActionResult Index()
         {
+
             ViewBag.Title = "Home Page";
 
             HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");

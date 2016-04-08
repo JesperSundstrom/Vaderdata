@@ -19,9 +19,9 @@ namespace VäderAPI.Controllers
         public VäderAPIContext db = new VäderAPIContext();
 
 
-        public IEnumerable<weather> Get()
+        public IEnumerable<weather> Get(string i)
         {
-
+            var db = new VäderAPIContext();
             HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");
 
             var windSpeed = page.DocumentNode.SelectSingleNode("//p[@id='windSpeed']").InnerText;
@@ -50,63 +50,36 @@ namespace VäderAPI.Controllers
 
         };
 
-
-            var db = new VäderAPIContext();
-            db.weathers.Add(new weather
+            if (i == "morkulla1337")
             {
-                windSpeed = windSpeed,
-                windDirection = windDirection,
-                airTemp = airTemp,
-                battery = battery,
-                gustSpeed = gustSpeed,
-                lastUpdate = latestUpdate,
-                waterTemp = waterTemp
-            });
-            db.SaveChanges();
-            return Weather;
+                db.weathers.Add(new weather
+                {
+                    windSpeed = windSpeed,
+                    windDirection = windDirection,
+                    airTemp = airTemp,
+                    battery = battery,
+                    gustSpeed = gustSpeed,
+                    lastUpdate = latestUpdate,
+                    waterTemp = waterTemp
+                });
+                db.SaveChanges();
+            }
+
+            return db.weathers.ToList();
         }
 
 
 
         // GET: api/weather/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/weather
-        public void Post([FromBody]string value)
+        public void Post(string value)
         {
-            HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");
-
-            var windSpeed = page.DocumentNode.SelectSingleNode("//p[@id='windSpeed']").InnerText;
-            var windDirection = page.DocumentNode.SelectSingleNode("//p[@id='windDirection']").InnerText;
-            var gustSpeed = page.DocumentNode.SelectSingleNode("//p[@id='gustSpeed']").InnerText;
-            var airTemp = page.DocumentNode.SelectSingleNode("//p[@id='airTemp']").InnerText;
-            var waterTemp = page.DocumentNode.SelectSingleNode("//p[@id='water']").InnerText;
-            var battery = page.DocumentNode.SelectSingleNode("//p[@id='battery']").InnerText;
-            var latestUpdate = page.DocumentNode.SelectSingleNode("//p[@id='latestUpdate']").InnerText;
-
-            windSpeed = windSpeed.Remove(windSpeed.Length - 5);
-            windDirection = windDirection.Remove(windDirection.Length - 6);
-            gustSpeed = gustSpeed.Remove(gustSpeed.Length - 5);
-            airTemp = airTemp.Remove(airTemp.Length - 7);
-            waterTemp = waterTemp.Remove(waterTemp.Length - 8);
-            battery = battery.Remove(battery.Length - 3);
-
-            var db = new VäderAPIContext();
-            db.weathers.Add(new weather
-            {
-                Id = 1,
-                windSpeed = windSpeed,
-                windDirection = windDirection,
-                airTemp = airTemp,
-                battery = battery,
-                gustSpeed = gustSpeed,
-                lastUpdate = latestUpdate,
-                waterTemp = waterTemp
-            });
-            db.SaveChanges();
+           
         }
 
         // PUT: api/weather/5
