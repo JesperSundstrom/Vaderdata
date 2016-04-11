@@ -21,11 +21,46 @@ $(document).ready(function () {
                 $('#batteri ').text("Batteri: " + item.battery + "%")
 
                 $('#updated ').text(item.lastUpdate)
+
+                var direction = parseInt(item.windDirection);
+                var canvas = new createjs.Stage("compass");
+
+                var compass = new createjs.Bitmap("./img/compass2.png");
+                compass.y = 125;
+                compass.x = 125;
+                compass.regX = 125;
+                compass.regY = 125;
+                compass.rotation = - direction + 1;
+                canvas.addChild(compass);
+
+                createjs.Tween.get(compass, { loop: true })
+                    .to({ rotation: - direction - 1 }, 2500, createjs.Ease.getPowInOut(2))
+                    .to({ rotation: - direction + 1 }, 2500, createjs.Ease.getPowInOut(2));
+
+                var needle = new createjs.Bitmap("./img/needle.png");
+                canvas.addChild(needle);
+
+                var vadersträcken = ["N", "NÖ", "Ö", "SÖ", "S", "SV", "V", "NV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
+                var streck = vadersträcken[Math.floor((direction + 22.5) / 45) % 8];
+
+                
+                var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
+                val.x = 114;
+                val.y = 125;
+                val.textBaseline = "alphabetic";
+                canvas.addChild(val);
+
+
+                var value = new createjs.Text(direction + '\xB0', "20px 'Lato'", "#000000");
+                value.x = 108;
+                value.y = 155;
+                value.textBaseline = "alphabetic";
+                canvas.addChild(value);
+
+                createjs.Ticker.setFPS(60);
+                createjs.Ticker.addEventListener("tick", canvas);
+
             })
-
-
-
-
 
         },
 

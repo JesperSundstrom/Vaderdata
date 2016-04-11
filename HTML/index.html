@@ -3,6 +3,8 @@
 <head>
     <title></title>
     <script src="./js/jquery-1.12.2.min.js"></script>
+    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+    <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
@@ -22,7 +24,8 @@
 
         <div class="section group">
             <div class="col span_1_of_2">
-                
+                <canvas id="compass" width="250" height="250"></canvas>
+
                 <ul id="vind"></ul>
             </div>
             <div class="col span_1_of_2">
@@ -39,5 +42,6 @@
         <p id="batteri"></p>
     </div>
     <script src="./js/load-data.js"></script>
+
 </body>
 </html>

@@ -50,11 +50,11 @@ function init() {
 
 		// Load the needle image
 		needle = new Image();
-		needle.src = '~/img/needle.png';
+		needle.src = 'needle.png';
 
 		// Load the compass image
 		img = new Image();
-		img.src = '~/img/compass.png';
+		img.src = 'compass.png';
 		img.onload = imgLoaded;
 	} else {
 		alert("Canvas not supported!");

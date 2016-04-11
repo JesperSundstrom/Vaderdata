@@ -34,6 +34,9 @@ ul{
 
 }
 
+#compass {
+    border: 2px solid tomato;
+}
 
 /*  COLUMN SETUP  */
 .col {
