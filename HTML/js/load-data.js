@@ -23,9 +23,12 @@ $(document).ready(function () {
                 $('#updated ').text(item.lastUpdate)
 
                 var direction = parseInt(item.windDirection);
+                var speed = item.windSpeed;
                 var canvas = new createjs.Stage("compass");
 
-                var compass = new createjs.Bitmap("./img/compass2.png");
+                var compass = new createjs.Bitmap("./img/compass.png");
+                compass.scaleX = .5;
+                compass.scaleY = .5;
                 //compass.y = 125;
                 //compass.x = 125;
                 //compass.regX = 125;
@@ -49,22 +52,35 @@ $(document).ready(function () {
                     .to({ rotation: direction - 1 }, 2000, createjs.Ease.getPowInOut(2))
                     .to({ rotation: direction + 1 }, 2000, createjs.Ease.getPowInOut(2));
 
-
+                var circles = new createjs.Bitmap("./img/Bubbles.png");
+                circles.scaleX = .5;
+                circles.scaleY = .5;
+                canvas.addChild(circles);
 
                 var vaderstracken = ["N", "NÖ", "Ö", "SÖ", "S", "SV", "V", "NV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
                 var streck = vaderstracken[Math.floor((direction + 22.5) / 45) % 8];
 
                 
                 var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
-                val.x = 116;
-                val.y = 125;
+                val.x = 113;
+                val.y = 121;
                 val.textBaseline = "alphabetic";
                 canvas.addChild(val);
-
-
-                var value = new createjs.Text(direction + '\xB0', "20px 'Lato'", "#000000");
-                value.x = 108;
+                var value = new createjs.Text(direction + '\xB0', "23px 'Lato'", "#000000");
+                value.x = 100;
                 value.y = 145;
+                value.textBaseline = "alphabetic";
+                canvas.addChild(value);
+
+
+                var value = new createjs.Text(speed, "15px 'Lato'", "#000000");
+                value.x = 70;
+                value.y = 103;
+                value.textBaseline = "alphabetic";
+                canvas.addChild(value);
+                var value = new createjs.Text("m/s", "15px 'Lato'", "#000000");
+                value.x = 73;
+                value.y = 116;
                 value.textBaseline = "alphabetic";
                 canvas.addChild(value);
 
