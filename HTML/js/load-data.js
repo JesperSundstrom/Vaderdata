@@ -95,7 +95,9 @@ $(document).ready(function () {
 
                 var canvasTemp = new createjs.Stage("Temp");
 
-                var rect = new createjs.Rectangle(0, 0, 100, 100);
+                var rect = new createjs.Shape();
+                rect.graphics.beginFill("tomato").drawRect(10, 10, 20, 100);
+
                 canvasTemp.addChild(rect);
 
 
