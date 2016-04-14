@@ -21,7 +21,7 @@ $(document).ready(function () {
                 $('#batteri ').text("Batteri: " + item.battery + "%")
 
                 $('#updated ').text(item.lastUpdate)
-
+//
                 var direction = parseInt(item.windDirection);
                 var speed = item.windSpeed;
                 var canvas = new createjs.Stage("compass");
@@ -87,6 +87,16 @@ $(document).ready(function () {
                 createjs.Ticker.setFPS(60);
                 createjs.Ticker.addEventListener("tick", canvas);
 
+
+
+                var canvasTemp = new createjs.Stage("Temp");
+
+                var rect = new createjs.Rectangle(0, 0, 100, 100);
+                canvasTemp.addChild(rect);
+
+
+                createjs.Ticker.setFPS(60);
+                createjs.Ticker.addEventListener("tick", canvasTemp);
             })
 
         },
