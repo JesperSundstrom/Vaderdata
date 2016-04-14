@@ -15,7 +15,7 @@ $(document).ready(function () {
                 // Add a list item for the product.
                 $('<li>', { text: "Vindhastighet: " + item.windSpeed + "m/s" }).appendTo($('#vind'));
                 $('<li>', { text: "Vindriktning: " + item.windDirection + "°" }).appendTo($('#vind'));
-                $('<li>', { text: "Vindpustar: " + item.gustSpeed + "m/s" }).appendTo($('#vind'));
+                $('<li>', { text: "Vindbyar: " + item.gustSpeed + "m/s" }).appendTo($('#vind'));
                 $('<li>', { text: "Luft temperatur: "+ item.airTemp + "° C" }).appendTo($('#temp'));
                 $('<li>', { text: "Vatten temperatur: " + item.waterTemp + "° C" }).appendTo($('#temp'));
                 $('#batteri ').text("Batteri: " + item.battery + "%")
@@ -49,8 +49,8 @@ $(document).ready(function () {
                 canvas.addChild(needle);
 
                 createjs.Tween.get(needle, { loop: true })
-                    .to({ rotation: direction - 181 }, 1000, createjs.Ease.getPowInOut(2))
-                    .to({ rotation: direction - 179 }, 2000, createjs.Ease.getPowInOut(2));
+                    .to({ rotation: direction - 181 }, 700, createjs.Ease.getPowInOut(2))
+                    .to({ rotation: direction - 179 }, 1000, createjs.Ease.getPowInOut(2));
 
                 var circles = new createjs.Bitmap("./img/Bubbles.png");
                 circles.scaleX = .5;
