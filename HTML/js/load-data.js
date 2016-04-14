@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'http://83.255.196.114:25565/api/weather',
+        url: 'http://vaderapi.lynxwebbyra.se/api/values',
         dataType: 'json',
         type: 'get',
         cache: false,
@@ -26,26 +26,37 @@ $(document).ready(function () {
                 var canvas = new createjs.Stage("compass");
 
                 var compass = new createjs.Bitmap("./img/compass2.png");
-                compass.y = 125;
-                compass.x = 125;
-                compass.regX = 125;
-                compass.regY = 125;
-                compass.rotation = - direction + 1;
+                //compass.y = 125;
+                //compass.x = 125;
+                //compass.regX = 125;
+                //compass.regY = 125;
+                //compass.rotation = - direction + 1;
                 canvas.addChild(compass);
 
-                createjs.Tween.get(compass, { loop: true })
-                    .to({ rotation: - direction - 1 }, 2500, createjs.Ease.getPowInOut(2))
-                    .to({ rotation: - direction + 1 }, 2500, createjs.Ease.getPowInOut(2));
+                //createjs.Tween.get(compass, { loop: true })
+                //    .to({ rotation: - direction - 1 }, 2500, createjs.Ease.getPowInOut(2))
+                //    .to({ rotation: - direction + 1 }, 2500, createjs.Ease.getPowInOut(2));
 
                 var needle = new createjs.Bitmap("./img/needle.png");
+                needle.y = 125;
+                needle.x = 125;
+                needle.regX = 125;
+                needle.regY = 125;
+                needle.rotation = direction + 1;
                 canvas.addChild(needle);
 
-                var vadersträcken = ["N", "NÖ", "Ö", "SÖ", "S", "SV", "V", "NV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
-                var streck = vadersträcken[Math.floor((direction + 22.5) / 45) % 8];
+                createjs.Tween.get(needle, { loop: true })
+                    .to({ rotation: direction - 1 }, 2000, createjs.Ease.getPowInOut(2))
+                    .to({ rotation: direction + 1 }, 2000, createjs.Ease.getPowInOut(2));
+
+
+
+                var vaderstracken = ["N", "NÖ", "Ö", "SÖ", "S", "SV", "V", "NV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
+                var streck = vaderstracken[Math.floor((direction + 22.5) / 45) % 8];
 
                 
                 var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
-                val.x = 114;
+                val.x = 116;
                 val.y = 125;
                 val.textBaseline = "alphabetic";
                 canvas.addChild(val);
@@ -53,7 +64,7 @@ $(document).ready(function () {
 
                 var value = new createjs.Text(direction + '\xB0', "20px 'Lato'", "#000000");
                 value.x = 108;
-                value.y = 155;
+                value.y = 145;
                 value.textBaseline = "alphabetic";
                 canvas.addChild(value);
 

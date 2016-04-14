@@ -27,15 +27,22 @@ ul{
     margin: 0px;
 }
 ul{
-    background-color:tomato;
     padding:20px;
-    height:200px;
-
 
 }
 
 #compass {
-    border: 2px solid tomato;
+    padding: 0;
+    margin: 10px auto;
+    display: block;
+}
+
+.cont {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+
+    background-color:tomato;
+
 }
 
 /*  COLUMN SETUP  */
