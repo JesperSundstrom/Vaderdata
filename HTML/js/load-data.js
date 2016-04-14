@@ -93,10 +93,21 @@ $(document).ready(function () {
 
 
 
+
+                //parseInt(item.airTemp)
+                var Luft = 35;
+                var tempHeight = Luft + 20;
                 var canvasTemp = new createjs.Stage("Temp");
 
+                var circles = new createjs.Bitmap("./img/Temp.png");
+                circles.x = -75;
+                circles.scaleX = .5;
+                circles.scaleY = .5;
+                canvasTemp.addChild(circles);
+
+
                 var rect = new createjs.Shape();
-                rect.graphics.beginFill("tomato").drawRect(10, 10, 20, 100);
+                rect.graphics.beginFill("tomato").drawRect(40, 178 - ((tempHeight * 3) + 1), 20, (tempHeight * 3) + 1);
 
                 canvasTemp.addChild(rect);
 
