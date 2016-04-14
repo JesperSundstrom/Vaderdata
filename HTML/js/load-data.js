@@ -62,13 +62,17 @@ $(document).ready(function () {
 
                 
                 var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
-                val.x = 113;
-                val.y = 121;
+                var b = val.getBounds();
+                val.x = 127 - b.width / 2;
+                val.y = 120;
+
                 val.textBaseline = "alphabetic";
                 canvas.addChild(val);
                 var value = new createjs.Text(direction + '\xB0', "23px 'Lato'", "#000000");
-                value.x = 100;
-                value.y = 145;
+                var b = value.getBounds();
+                value.x = 125 - b.width / 2;
+                value.y = 157- b.height / 2;
+
                 value.textBaseline = "alphabetic";
                 canvas.addChild(value);
 
