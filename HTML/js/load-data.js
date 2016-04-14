@@ -45,7 +45,7 @@ $(document).ready(function () {
                 needle.x = 125;
                 needle.regX = 125;
                 needle.regY = 125;
-                needle.rotation = direction + 1;
+                needle.rotation =  direction  - 180;
                 canvas.addChild(needle);
 
                 createjs.Tween.get(needle, { loop: true })
@@ -57,7 +57,7 @@ $(document).ready(function () {
                 circles.scaleY = .5;
                 canvas.addChild(circles);
 
-                var vaderstracken = ["N", "NÖ", "Ö", "SÖ", "S", "SV", "V", "NV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
+                var vaderstracken = ["S", "SV", "V", "NV", "N", "NÖ", "Ö", "SÖ"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
                 var streck = vaderstracken[Math.floor((direction + 22.5) / 45) % 8];
 
                 
