@@ -6,11 +6,30 @@
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <script src="js/hamburgler.js"> </script>
+    <link rel="stylesheet" href="style/hamburgler.css">
+
 </head>
 <body>
-        <div class="section group">
+        <header class="section group">
+
             <div class="header col span_2_of_2">
                 <div class="wrapper">
+                    <div class="mobilenav">
+                        <li><a href="#">Never</a></li>
+                        <li><a href="#">Gonna</a></li>
+                        <li><a href="#">Give</a></li>
+                        <li><a href="#">You</a></li>
+                        <li><a href="#">Up</a></li>
+                    </div>
+
+                    <a href="javascript:void(0)" class="icon">
+                        <div class="hamburger">
+                            <div class="menui top-menu"></div>
+                            <div class="menui mid-menu"></div>
+                            <div class="menui bottom-menu"></div>
+                        </div>
+                    </a>
 
                     <h1>Väderdata från grythem</h1>
                     <p id="status">Uppdaterad senast <span id="updated"></span></p>
@@ -18,7 +37,7 @@
                 </div>
             </div>
 
-        </div>
+        </header>
     <div class="wrapper">
 
 
