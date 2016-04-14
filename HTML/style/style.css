@@ -2,6 +2,7 @@
 body {
     margin: 0;
     font-family: 'Lato', sans-serif;
+    background-color:rgb(127, 167, 167);
 }
 /*  SECTIONS  */
 a,p,h1,h2,h3{
