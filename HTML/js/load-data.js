@@ -13,12 +13,8 @@ $(document).ready(function () {
 
             $.each(data, function (key, item) {
                 // Add a list item for the product.
-                $('<li>', { text: "Vindhastighet: " + item.windSpeed + "m/s" }).appendTo($('#vind'));
-                $('<li>', { text: "Vindriktning: " + item.windDirection + "°" }).appendTo($('#vind'));
-                $('<li>', { text: "Vindbyar: " + item.gustSpeed + "m/s" }).appendTo($('#vind'));
-                $('<li>', { text: "Luft temperatur: "+ item.airTemp + "° C" }).appendTo($('#temp'));
-                $('<li>', { text: "Vatten temperatur: " + item.waterTemp + "° C" }).appendTo($('#temp'));
                 $('#batteri ').text("Batteri: " + item.battery + "%")
+                $('#vindbyar ').text("*Med vinbyar upp till " + item.gustSpeed + "m/s")
 
                 $('#updated ').text(item.lastUpdate)
 //
@@ -94,26 +90,86 @@ $(document).ready(function () {
 
 
 
-                //parseInt(item.airTemp)
-                var Luft = 0;
+                //LuftTempratur
+                var Luft = parseInt(item.airTemp);
                 var tempHeight = Luft + 10;
-                var canvasTemp = new createjs.Stage("Temp");
+                var canvasAirTemp = new createjs.Stage("airTemp");
+
+                var rect = new createjs.Shape();
+                rect.graphics.beginFill("#c0dcdf").drawRect(32, 169 - ((46 * 3.5) + 1), 34, (46 * 3.5) + 1);
+                rect.graphics.beginFill("#7dcbdc").drawRect(32, 169 - ((Math.min(tempHeight, 46) * 3.5) + 1), 34, (Math.min(tempHeight, 46) * 3.5) + 1);
+                rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
+                canvasAirTemp.addChild(rect);
+
+                var circles = new createjs.Bitmap("./img/cloud.png");
+                circles.scaleX = .6;
+                circles.scaleY = .7;
+                circles.x = 20;
+                circles.y = 170;
+                canvasAirTemp.addChild(circles);
+
+                var value = new createjs.Text(Luft + '\xB0', "23px 'Lato'", "#000000");
+                var b = value.getBounds();
+                value.x = 50 - b.width / 2;
+                value.y = 230 - b.height / 2;
+                value.textBaseline = "alphabetic";
+                canvasAirTemp.addChild(value);
 
                 var circles = new createjs.Bitmap("./img/Temp.png");
                 circles.x = -75;
                 circles.scaleX = .5;
                 circles.scaleY = .5;
-                canvasTemp.addChild(circles);
+                canvasAirTemp.addChild(circles);
 
-
-                var rect = new createjs.Shape();
-                rect.graphics.beginFill("tomato").drawRect(45, 169 - ((tempHeight * 3.5) + 1), 20, (tempHeight * 3.5) + 1);
-
-                canvasTemp.addChild(rect);
-
+                var circles = new createjs.Bitmap("./img/Temp-Streck.png");
+                circles.x = -75;
+                circles.scaleX = .5;
+                circles.scaleY = .5;
+                canvasAirTemp.addChild(circles);
 
                 createjs.Ticker.setFPS(60);
-                createjs.Ticker.addEventListener("tick", canvasTemp);
+                createjs.Ticker.addEventListener("tick", canvasAirTemp);
+
+
+                //VattenTemp
+                var waterTemp = parseInt(item.waterTemp);
+                var tempHeight = waterTemp + 5;
+                var canvasWaterTemp = new createjs.Stage("waterTemp");
+
+                var rect = new createjs.Shape();
+                rect.graphics.beginFill("#c0dcdf").drawRect(32, 169 - ((46 * 3.5) + 1), 34, (46 * 3.5) + 1);
+                rect.graphics.beginFill("#7dcbdc").drawRect(32, 169 - ((Math.min(tempHeight, 35) * 4.5) + 1), 34, (Math.min(tempHeight, 35) * 4.5) + 1);
+                rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
+                canvasWaterTemp.addChild(rect);
+
+                var circles = new createjs.Bitmap("./img/drop.png");
+                circles.scaleX = .6;
+                circles.scaleY = .6;
+                circles.x = 20;
+                circles.y = 175;
+                canvasWaterTemp.addChild(circles);
+
+                var value = new createjs.Text(waterTemp + '\xB0', "23px 'Lato'", "#000000");
+                var b = value.getBounds();
+                value.x = 50 - b.width / 2;
+                value.y = 230 - b.height / 2;
+                value.textBaseline = "alphabetic";
+                canvasWaterTemp.addChild(value);
+
+                var circles = new createjs.Bitmap("./img/Temp.png");
+                circles.x = -75;
+                circles.scaleX = .5;
+                circles.scaleY = .5;
+                canvasWaterTemp.addChild(circles);
+
+                var circles = new createjs.Bitmap("./img/Temp-Streck.png");
+                circles.x = -75;
+                circles.scaleX = .5;
+                circles.scaleY = .5;
+                canvasWaterTemp.addChild(circles);
+
+                createjs.Ticker.setFPS(60);
+                createjs.Ticker.addEventListener("tick", canvasWaterTemp);
             })
 
         },

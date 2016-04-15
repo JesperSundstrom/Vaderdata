@@ -13,56 +13,79 @@
 
 </head>
 <body>
-        <header class="section group">
+    <header class="section group">
 
-            <div class="header col span_2_of_2">
-                <div class="wrapper">
-                    <div class="mobilenav">
-                        <li><a href="#">Never</a></li>
-                        <li><a href="#">Gonna</a></li>
-                        <li><a href="#">Give</a></li>
-                        <li><a href="#">You</a></li>
-                        <li><a href="#">Up</a></li>
-                    </div>
-
-                    <a href="javascript:void(0)" class="icon">
-                        <div class="hamburger">
-                            <div class="menui top-menu"></div>
-                            <div class="menui mid-menu"></div>
-                            <div class="menui bottom-menu"></div>
-                        </div>
-                    </a>
-
-                    <h1>Väderdata från Grythem</h1>
-                    <p id="status">Uppdaterad senast <span id="updated"></span></p>
-
+        <div class="header col span_2_of_2">
+            <div class="wrapper">
+                <div class="mobilenav">
+                    <li><a href="#">Never</a></li>
+                    <li><a href="#">Gonna</a></li>
+                    <li><a href="#">Give</a></li>
+                    <li><a href="#">You</a></li>
+                    <li><a href="#">Up</a></li>
                 </div>
-            </div>
 
-        </header>
+                <a href="javascript:void(0)" class="icon">
+                    <div class="hamburger">
+                        <div class="menui top-menu"></div>
+                        <div class="menui mid-menu"></div>
+                        <div class="menui bottom-menu"></div>
+                    </div>
+                </a>
+
+                <h1>Väderdata från Grythem</h1>
+                <p id="status">Uppdaterad senast <span id="updated"></span></p>
+
+            </div>
+        </div>
+
+    </header>
     <div class="wrapper">
 
 
         <div class="section group">
-            <div class="col span_1_of_2 cont">
-                <canvas id="compass" width="250" height="250"></canvas>
-                <canvas id="Temp" width="100" height="250"></canvas>
+            <div class="col span_2_of_2 cont">
+                <div class="compassContainer">
 
-                <ul id="vind"></ul>
+                    <canvas id="compass" width="250" height="250"></canvas>
+                    <p id="vindbyar">Med vinbyar upp till </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="section group" style=" margin:0 auto;max-width:500px;">
+
+            <div class="col span_1_of_2 cont">
+                <div class="tempContainer">
+
+                    <canvas id="airTemp" width="100" height="250"></canvas>
+                    <h1>Luft</h1>
+                </div>
             </div>
             <div class="col span_1_of_2 cont">
-                <ul id="temp"></ul>
+                <div class="tempContainer">
+                    <canvas id="waterTemp" width="100" height="250"></canvas>
+                    <h1>Vatten</h1>
+                </div>
+            </div>
+
+            <div class="col span_1_of_2 cont">
+
             </div>
         </div>
-        <div class="header  span_2_of_2">
 
-                <h1>Om väderstationen</h1>
-        </div>
-        <p>Hemsidan drivs av en väderstation ute på grytem</p>
 
-      
-        <p id="batteri"></p>
     </div>
+
+    <footer class="header  span_2_of_2">
+
+        <h1>Om väderstationen</h1>
+        <p>Hemsidan drivs av en väderstation ute på grytem stationen drivs av en båtklubb där</p>
+        <p>Hemsidan skapad av Axel och Jesper</p>
+        <p id="batteri"></p>
+
+    </footer>
+
     <script src="./js/load-data.js"></script>
 
 </body>
