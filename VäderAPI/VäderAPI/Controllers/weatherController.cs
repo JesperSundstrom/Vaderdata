@@ -18,8 +18,14 @@ namespace VäderAPI.Controllers
 
         public VäderAPIContext db = new VäderAPIContext();
 
+        public IEnumerable<weather> Get()
+        {
+            var db = new VäderAPIContext();
 
-        public IEnumerable<weather> Get(string i)
+            return db.weathers.ToList();
+        }
+
+        public IEnumerable<weather> UpdateDatabase()
         {
             var db = new VäderAPIContext();
             HtmlDocument page = new HtmlWeb().Load("http://83.255.197.77/");
@@ -38,37 +44,22 @@ namespace VäderAPI.Controllers
             airTemp = airTemp.Remove(airTemp.Length - 7);
             waterTemp = waterTemp.Remove(waterTemp.Length - 8);
             battery = battery.Remove(battery.Length - 3);
-
-            //Update Interval
-            //2016-03-31 12:33:14
-            //2016-03-31 13:33:05
-            //
-            //
-            weather[] Weather = new weather[] 
-        { 
-                        new weather { Id = 1, windSpeed = windSpeed, windDirection = windDirection, airTemp = airTemp, battery = battery, gustSpeed = gustSpeed, lastUpdate = latestUpdate, waterTemp = waterTemp},
-
-        };
-
-            if (i == "morkulla1337")
+            db.weathers.Add(new weather
             {
-                db.weathers.Add(new weather
-                {
-                    windSpeed = windSpeed,
-                    windDirection = windDirection,
-                    airTemp = airTemp,
-                    battery = battery,
-                    gustSpeed = gustSpeed,
-                    lastUpdate = latestUpdate,
-                    waterTemp = waterTemp
-                });
-                db.SaveChanges();
-            }
+                windSpeed = windSpeed,
+                windDirection = windDirection,
+                airTemp = airTemp,
+                battery = battery,
+                gustSpeed = gustSpeed,
+                lastUpdate = latestUpdate,
+                waterTemp = waterTemp
+            });
+            db.SaveChanges();
+
+
 
             return db.weathers.ToList();
         }
-
-
 
         // GET: api/weather/5
         //public string Get(int id)
@@ -79,7 +70,7 @@ namespace VäderAPI.Controllers
         // POST: api/weather
         public void Post(string value)
         {
-           
+
         }
 
         // PUT: api/weather/5
