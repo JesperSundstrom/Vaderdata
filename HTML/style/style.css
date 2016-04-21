@@ -4,7 +4,7 @@ body {
     margin: 0;
     font-family: 'Lato', sans-serif;
     background-color: #98C8CE;
-    font-size:1em;
+    font-size: 1em;
 }
 /*  SECTIONS  */
 a, p, h1, h2, h3 {
@@ -18,7 +18,7 @@ h1 {
 
 p {
     color: #f9feff;
-    font-size:1.2em;
+    font-size: 1.2em;
 }
 
 .compassContainer {
@@ -26,6 +26,43 @@ p {
     max-width: 250px;
     text-align: center;
 }
+
+.historyContainer {
+    margin: 0 auto;
+    position: relative;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    max-width: 500px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    text-align:center;
+        top: -50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: -100px;
+}
+.historyContainer .time{
+    font-size:0.8em;
+}
+    .historyContainer div {
+        display: inline-block;
+        border: 1px solid;
+        background-color: #c0dcdf;
+        width:100px;
+    }
+      .historyContainer img {
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(100deg); /* Chrome, Safari, Opera */
+    transform: rotate(100deg);
+
+    }
+        .historyContainer div span {
+            position: relative;
+            border: 1px solid black;
+        }
 
 .tempContainer {
     margin: 0 auto;
@@ -59,9 +96,11 @@ ul {
 ul {
     padding: 20px;
 }
-#batteri{
-    float:right;
+
+#batteri {
+    float: right;
 }
+
 #compass {
     padding: 0;
     margin: 10px auto;

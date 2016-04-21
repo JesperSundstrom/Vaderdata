@@ -13,6 +13,11 @@ $(document).ready(function () {
 
             $.each(data, function (key, item) {
                 // Add a list item for the product.
+
+                $(".historyContainer").append('<div><p class="time">15:00</p><p>' + item.windSpeed + 'm/s</p><img style="-ms-transform: rotate(' + item.windDirection + 'deg); -webkit-transform: rotate(' + item.windDirection + 'deg);transform: rotate(' + item.windDirection + 'deg);"width="60px" src="http://previews.123rf.com/images/stefaninahill/stefaninahill1202/stefaninahill120200046/12475202-Arrow-Pointing-Up-Stock-Vector-arrow-arrows.jpg" /><p>' + item.windDirection + '°</p></div>');
+
+
+
                 $('#batteri ').text("Batteri: " + item.battery + "%")
                 $('#vindbyar ').text("*Med vinbyar upp till " + item.gustSpeed + "m/s")
 
