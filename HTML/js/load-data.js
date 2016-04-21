@@ -41,20 +41,21 @@ $(document).ready(function () {
                 needle.x = 125;
                 needle.regX = 125;
                 needle.regY = 125;
-                needle.rotation =  direction - 179;
+                needle.rotation =  direction - 1;
+
                 canvas.addChild(needle);
 
                 createjs.Tween.get(needle, { loop: true })
-                    .to({ rotation: direction - 181 }, 700, createjs.Ease.getPowInOut(2))
-                    .to({ rotation: direction - 179 }, 1000, createjs.Ease.getPowInOut(2));
+                    .to({ rotation: direction + 1 }, 700, createjs.Ease.getPowInOut(2))
+                    .to({ rotation: direction - 1 }, 1000, createjs.Ease.getPowInOut(2));
 
                 var circles = new createjs.Bitmap("./img/Bubbles.png");
                 circles.scaleX = .5;
                 circles.scaleY = .5;
                 canvas.addChild(circles);
 
-                var vaderstracken = ["S", "SV", "V", "NV", "N", "NÖ", "Ö", "SÖ"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
-                var streck = vaderstracken[Math.floor((direction + 22.5) / 45) % 8];
+                var vaderstracken = ["N", "NNO", "NO", "ONO", "O", "OSO", "SO", "SSO", "S", "SSV", "SV", "VSV", "V", "VNV", "NV", "NNV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
+                var streck = vaderstracken[Math.floor((direction + 11.25) / 22.5) % 16];
 
                 
                 var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
