@@ -34,7 +34,7 @@ p {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    max-width: 500px;
+    max-width: 550px;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     text-align: center;
@@ -46,6 +46,10 @@ p {
 .historyContainer p{
         color: #173A3E;
 
+}
+.temp{
+    background-color:#98C8CE;
+    position:relative;
 }
     .historyContainer .time {
         font-size: 0.8em;
