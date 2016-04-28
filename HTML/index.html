@@ -1,7 +1,11 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<<<<<<< HEAD
+    <title>Väderdata Grythem</title>
+=======
     <title>Väder Grythem</title>
+>>>>>>> origin/master
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -48,7 +52,9 @@
             <div class="col span_2_of_2 cont">
                 <div class="compassContainer">
 
-                    <canvas id="compass" width="250" height="250"></canvas>
+                    <canvas id="compass" width="250" height="250">
+                        [Din Webbläsare stödjer ej Canvas]
+                    </canvas>
                     <p id="vindbyar">Med vinbyar upp till </p>
                 </div>
             </div>
@@ -59,6 +65,7 @@
         <div class="section group">
 
             <div class="col span_2_of_2 cont">
+<<<<<<< HEAD
                 <div class="historyContainer">
 
 
@@ -71,6 +78,12 @@
                     <div><p class="time">15:00</p><p>2m/s</p><img style="-ms-transform: rotate(140deg); -webkit-transform: rotate(140deg);transform: rotate(140deg);" width="60px" src="img/pil.png"><p>320°</p></div>
 
                     <div><p class="time">15:30</p><p>4m/s</p><img style="-ms-transform: rotate(170deg); -webkit-transform: rotate(170deg);transform: rotate(170deg);" width="60px" src="img/pil.png"><p>350°</p></div>
+=======
+                <div id="graph-wrapper">
+                    <div class="graph-container">
+                        <div id="graph-lines"></div>
+                    </div>
+>>>>>>> origin/master
                 </div>
             </div>
         </div>
@@ -79,13 +92,17 @@
             <div class="col span_1_of_2 cont">
                 <div class="tempContainer">
 
-                    <canvas id="airTemp" width="100" height="250"></canvas>
+                    <canvas id="airTemp" width="100" height="250">
+                        [Din Webbläsare stödjer ej Canvas]
+                    </canvas>
                     <h1>Luft</h1>
                 </div>
             </div>
             <div class="col span_1_of_2 cont">
                 <div class="tempContainer">
-                    <canvas id="waterTemp" width="100" height="250"></canvas>
+                    <canvas id="waterTemp" width="100" height="250">
+                        [Din Webbläsare stödjer ej Canvas]
+                    </canvas>
                     <h1>Vatten</h1>
                 </div>
             </div>
@@ -98,6 +115,76 @@
 
     </div>
 
+
+    <script src="js/jquery.flot.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Graph scripts here
+            var graphData = [{
+                // Visits
+                data: [[6, 13], [7, 16], [8, 19], [9, 21], [10.25, 25], [11, 22], [12, 20], [13, 19], [14, 19], [15, 20]],
+                color: '#173A3E'
+            }
+            ];
+            $.plot($('#graph-lines'), graphData, {
+                series: {
+                    points: {
+                        show: true,
+                        radius: 5
+                    },
+                    lines: {
+                        show: true
+                    },
+                    shadowSize: 0
+                },
+                grid: {
+                    color: '#646464',
+                    borderColor: '#c0dcdf',
+                    borderWidth: 20,
+                    hoverable: true,
+                    backgroundColor: "#c0dcdf",
+                },
+                xaxis: {
+                    tickColor: 'transparent',
+                    tickDecimals: 2
+                },
+                yaxis: {
+                    tickSize: 5
+                }
+
+            });
+
+
+
+
+        });
+
+        function showTooltip(x, y, contents) {
+            $('<div id="tooltip">' + contents + '</div>').css({
+                top: y - 16,
+                left: x + 20
+            }).appendTo('body').fadeIn();
+        }
+
+        var previousPoint = null;
+
+        $('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
+            if (item) {
+                if (previousPoint != item.dataIndex) {
+                    previousPoint = item.dataIndex;
+                    $('#tooltip').remove();
+                    var x = item.datapoint[0],
+                        y = item.datapoint[1];
+                    showTooltip(item.pageX, item.pageY, y + ' <br> Vindrikting på 360deg <br>' + x);
+                }
+            } else {
+                $('#tooltip').remove();
+                previousPoint = null;
+            }
+        });
+    </script>
+
+
     <footer class="header  span_2_of_2">
 
         <h1>Om väderstationen</h1>
@@ -108,6 +195,7 @@
     </footer>
 
     <script src="./js/load-data.js"></script>
+
 
 </body>
 </html>
