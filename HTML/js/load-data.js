@@ -1,9 +1,11 @@
+var windSpeedGraph = []; 
+
 $(document).ready(function () {
     // Send an AJAX request
 
 
     $.ajax({
-        url: 'http://vaderapi.lynxwebbyra.se/api/values',
+        url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get',
         dataType: 'json',
         type: 'get',
         cache: false,
@@ -21,7 +23,7 @@ $(document).ready(function () {
                 $('#vindbyar ').text("*Med vinbyar upp till " + item.gustSpeed + "m/s")
 
                 $('#updated ').text(item.lastUpdate)
-//
+                //
                 var direction = parseInt(item.windDirection);
                 $(".historyContainer").append('<div><p class="time">nu</p><p>' + item.windSpeed + 'm/s</p><img style="-ms-transform: rotate(' + (direction - 180) + 'deg); -webkit-transform: rotate(' + (direction - 180) + 'deg);transform: rotate(' + (direction - 180) + 'deg);"width="60px" src="img/pil.png" /><p>' + item.windDirection + '°</p></div>');
 
@@ -184,35 +186,43 @@ $(document).ready(function () {
 
 
 
-                var graph = new createjs.Stage("graph");
 
-                var line = new createjs.Shape();
-
-                graph.addChild(line);
-
-      
-                line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-
-                line.graphics.moveTo(100, 205);
-
-                line.graphics.lineTo(150, 305);
-
-                line.graphics.lineTo(200, 96);
-
-                line.graphics.lineTo(250, 180);
-
-                line.graphics.lineTo(300, 200);
-
-
-                line.graphics.endStroke();
-
-                createjs.Ticker.setFPS(60);
-                createjs.Ticker.addEventListener("tick", graph);
+                windSpeedGraph.push(item.windSpeed)
 
 
 
 
             })
+            console.log(windSpeedGraph);
+
+            windSpeedGraph.reverse();
+            console.log(windSpeedGraph);
+            
+            var graph = new createjs.Stage("graph");
+
+            var line = new createjs.Shape();
+            line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
+            line.graphics.moveTo(700, 300 - windSpeedGraph[0]);
+
+            for (var i = 1; i < 15; i++) {
+                line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20);
+                console.log((line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20)));
+
+                  var pil = new createjs.Bitmap("./img/GrafDot2.png");
+                  pil.x = 700 - (i * 50) - 25;
+                  pil.y = windSpeedGraph[i] * 20 - 25;
+
+                  graph.addChild(pil);
+            }
+
+            line.graphics.endStroke();
+            graph.addChild(line);
+
+
+
+
+
+            graph.update();
 
         },
 
