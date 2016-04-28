@@ -177,6 +177,41 @@ $(document).ready(function () {
 
                 createjs.Ticker.setFPS(60);
                 createjs.Ticker.addEventListener("tick", canvasWaterTemp);
+
+
+
+
+
+
+
+                var graph = new createjs.Stage("graph");
+
+                var line = new createjs.Shape();
+
+                graph.addChild(line);
+
+      
+                line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
+
+                line.graphics.moveTo(100, 205);
+
+                line.graphics.lineTo(150, 305);
+
+                line.graphics.lineTo(200, 96);
+
+                line.graphics.lineTo(250, 180);
+
+                line.graphics.lineTo(300, 200);
+
+
+                line.graphics.endStroke();
+
+                createjs.Ticker.setFPS(60);
+                createjs.Ticker.addEventListener("tick", graph);
+
+
+
+
             })
 
         },
