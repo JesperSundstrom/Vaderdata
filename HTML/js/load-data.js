@@ -202,16 +202,24 @@ $(document).ready(function () {
 
             var line = new createjs.Shape();
             line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-            line.graphics.moveTo(700, 300 - windSpeedGraph[0]);
+            line.graphics.moveTo(700, 300 - windSpeedGraph[0] * 20);
+
+            var pil = new createjs.Bitmap("./img/pil.png");
+            pil.x = 700 - 25;
+            pil.y = 300 - windSpeedGraph[0] * 20 - 25;
+            pil.scaleX = .5;
+            pil.scaleY = .5;
+            graph.addChild(pil);
 
             for (var i = 1; i < 15; i++) {
                 line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20);
                 console.log((line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20)));
 
-                  var pil = new createjs.Bitmap("./img/GrafDot2.png");
+                  var pil = new createjs.Bitmap("./img/pil.png");
                   pil.x = 700 - (i * 50) - 25;
-                  pil.y = windSpeedGraph[i] * 20 - 25;
-
+                  pil.y = 300 - windSpeedGraph[i] * 20 - 25;
+                  pil.scaleX = .5;
+                  pil.scaleY = .5;
                   graph.addChild(pil);
             }
 
