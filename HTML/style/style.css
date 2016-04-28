@@ -26,8 +26,11 @@ p {
     max-width: 250px;
     text-align: center;
 }
+.dragscroll{
+cursor:move;
 
-.historyContainer {
+}
+.x-scroll {
     margin: 0 auto;
     position: relative;
     white-space: nowrap;

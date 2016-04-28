@@ -1,4 +1,5 @@
-var windSpeedGraph = []; 
+var windSpeedGraph = [];
+var windDirectionGraph = [];
 
 $(document).ready(function () {
     // Send an AJAX request
@@ -49,7 +50,7 @@ $(document).ready(function () {
                 needle.x = 125;
                 needle.regX = 125;
                 needle.regY = 125;
-                needle.rotation =  direction - 1;
+                needle.rotation = direction - 1;
 
                 canvas.addChild(needle);
 
@@ -65,7 +66,7 @@ $(document).ready(function () {
                 var vaderstracken = ["N", "NNO", "NO", "ONO", "O", "OSO", "SO", "SSO", "S", "SSV", "SV", "VSV", "V", "VNV", "NV", "NNV"]; // (i * 45 - 22.5) % 360  ||  ((i + 1) * 45 - 22.5) % 360, 
                 var streck = vaderstracken[Math.floor((direction + 11.25) / 22.5) % 16];
 
-                
+
                 var val = new createjs.Text(streck, "20px 'Lato'", "#000000");
                 var b = val.getBounds();
                 val.x = 127 - b.width / 2;
@@ -76,7 +77,7 @@ $(document).ready(function () {
                 var value = new createjs.Text(direction + '\xB0', "23px 'Lato'", "#000000");
                 var b = value.getBounds();
                 value.x = 125 - b.width / 2;
-                value.y = 157- b.height / 2;
+                value.y = 157 - b.height / 2;
 
                 value.textBaseline = "alphabetic";
                 canvas.addChild(value);
@@ -187,17 +188,18 @@ $(document).ready(function () {
 
 
 
-                windSpeedGraph.push(item.windSpeed)
+                windSpeedGraph.push(item.windSpeed);
+                windDirectionGraph.push(item.windDirection);
 
 
 
 
             })
-            console.log(windSpeedGraph);
 
             windSpeedGraph.reverse();
-            console.log(windSpeedGraph);
-            
+            windDirectionGraph.reverse();
+
+
             var graph = new createjs.Stage("graph");
 
             var line = new createjs.Shape();
@@ -205,32 +207,38 @@ $(document).ready(function () {
             line.graphics.moveTo(700, 300 - windSpeedGraph[0] * 20);
 
             var pil = new createjs.Bitmap("./img/pil.png");
-            pil.x = 700 - 25;
-            pil.y = 300 - windSpeedGraph[0] * 20 - 25;
+            pil.regX = 50;
+            pil.regY = 50;
+            pil.x = 700;
+            pil.y = 300 - windSpeedGraph[0] * 20;
+            pil.rotation = windDirectionGraph[0] - 180;
+
             pil.scaleX = .5;
             pil.scaleY = .5;
             graph.addChild(pil);
 
             for (var i = 1; i < 15; i++) {
                 line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20);
-                console.log((line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20)));
 
-                  var pil = new createjs.Bitmap("./img/pil.png");
-                  pil.x = 700 - (i * 50) - 25;
-                  pil.y = 300 - windSpeedGraph[i] * 20 - 25;
-                  pil.scaleX = .5;
-                  pil.scaleY = .5;
-                  graph.addChild(pil);
+                var pil = new createjs.Bitmap("./img/pil.png");
+                pil.regX = 50;
+                pil.regY = 50;
+                pil.x = 700 - (i * 50);
+                pil.y = 300 - windSpeedGraph[i] * 20;
+                pil.rotation = windDirectionGraph[i] - 180;
+                pil.scaleX = .5;
+                pil.scaleY = .5;
+                graph.addChild(pil);
             }
 
             line.graphics.endStroke();
             graph.addChild(line);
 
-
-
-
-
             graph.update();
+            var left =  $('.x-scroll').width();
+
+            $('.x-scroll, html').scrollLeft(left);
+
 
         },
 

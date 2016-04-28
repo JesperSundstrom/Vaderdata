@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./style/style.css">
     <script src="js/hamburgler.js"> </script>
     <link rel="stylesheet" href="style/hamburgler.css">
+    <script src="./js/dragscroll.js"></script>
 
 </head>
 <body>
@@ -55,13 +56,16 @@
                 </div>
             </div>
         </div>
+        <div class="x-scroll dragscroll">
 
-        <canvas id="graph" width="700" height="400" style="border: 3px solid tomato;"></canvas>
+            <canvas class="" id="graph" width="700" height="400" style=" border : 3px solid tomato;"></canvas>
+
+        </div>
 
         <div class="section group">
 
             <div class="col span_2_of_2 cont">
-                <div class="historyContainer">
+                <div class="historyContainer x-scroll">
 
 
 
@@ -75,11 +79,6 @@
                     <div><p class="time">15:30</p><p>4m/s</p><img style="-ms-transform: rotate(170deg); -webkit-transform: rotate(170deg);transform: rotate(170deg);" width="60px" src="img/pil.png"><p>350°</p></div>
                 </div>
                     
-                      <div id="graph-wrapper">
-                    <div class="graph-container">
-                        <div id="graph-lines"></div>
-                    </div>
-            </div>
         </div>
         <div class="section group temp" style=" margin:0 auto;max-width:500px;">
 
@@ -110,73 +109,7 @@
     </div>
 
 
-    <script src="js/jquery.flot.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Graph scripts here
-            var graphData = [{
-                // Visits
-                data: [[6, 13], [7, 16], [8, 19], [9, 21], [10.25, 25], [11, 22], [12, 20], [13, 19], [14, 19], [15, 20]],
-                color: '#173A3E'
-            }
-            ];
-            $.plot($('#graph-lines'), graphData, {
-                series: {
-                    points: {
-                        show: true,
-                        radius: 5
-                    },
-                    lines: {
-                        show: true
-                    },
-                    shadowSize: 0
-                },
-                grid: {
-                    color: '#646464',
-                    borderColor: '#c0dcdf',
-                    borderWidth: 20,
-                    hoverable: true,
-                    backgroundColor: "#c0dcdf",
-                },
-                xaxis: {
-                    tickColor: 'transparent',
-                    tickDecimals: 2
-                },
-                yaxis: {
-                    tickSize: 5
-                }
-
-            });
-
-
-
-
-        });
-
-        function showTooltip(x, y, contents) {
-            $('<div id="tooltip">' + contents + '</div>').css({
-                top: y - 16,
-                left: x + 20
-            }).appendTo('body').fadeIn();
-        }
-
-        var previousPoint = null;
-
-        $('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
-            if (item) {
-                if (previousPoint != item.dataIndex) {
-                    previousPoint = item.dataIndex;
-                    $('#tooltip').remove();
-                    var x = item.datapoint[0],
-                        y = item.datapoint[1];
-                    showTooltip(item.pageX, item.pageY, y + ' <br> Vindrikting på 360deg <br>' + x);
-                }
-            } else {
-                $('#tooltip').remove();
-                previousPoint = null;
-            }
-        });
-    </script>
+    
 
 
     <footer class="header  span_2_of_2">
@@ -190,6 +123,6 @@
 
     <script src="./js/load-data.js"></script>
 
-
+        
 </body>
 </html>
