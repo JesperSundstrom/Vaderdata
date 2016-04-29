@@ -202,42 +202,58 @@ $(document).ready(function () {
 
             var graph = new createjs.Stage("graph");
 
+
+
+            var canvas = document.getElementById("graph");
+
+            var antalLaddade = 50;
+
             var line = new createjs.Shape();
             line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-            line.graphics.moveTo(700, 300 - windSpeedGraph[0] * 20);
+            line.graphics.moveTo(antalLaddade * 50, 300 - windSpeedGraph[0] * 20);
 
-            var pil = new createjs.Bitmap("./img/pil.png");
-            pil.regX = 50;
-            pil.regY = 50;
-            pil.x = 700;
-            pil.y = 300 - windSpeedGraph[0] * 20;
-            pil.rotation = windDirectionGraph[0] - 180;
 
-            pil.scaleX = .5;
-            pil.scaleY = .5;
-            graph.addChild(pil);
+            for (var i = 1; i < antalLaddade; i++) {
+                line.graphics.lineTo(antalLaddade * 50 - (i * 50), 300 - windSpeedGraph[i] * 20);
+                canvas.width = (antalLaddade * 50);
 
-            for (var i = 1; i < 15; i++) {
-                line.graphics.lineTo(700 - (i * 50), 300 - windSpeedGraph[i] * 20);
-
-                var pil = new createjs.Bitmap("./img/pil.png");
-                pil.regX = 50;
-                pil.regY = 50;
-                pil.x = 700 - (i * 50);
-                pil.y = 300 - windSpeedGraph[i] * 20;
-                pil.rotation = windDirectionGraph[i] - 180;
-                pil.scaleX = .5;
-                pil.scaleY = .5;
-                graph.addChild(pil);
             }
 
             line.graphics.endStroke();
             graph.addChild(line);
 
-            graph.update();
-            var left =  $('.x-scroll').width();
 
-            $('.x-scroll, html').scrollLeft(left);
+            var pil = new createjs.Bitmap("./img/GrafDot2.png");
+            pil.regX = 25;
+            pil.regY = 25;
+            pil.x = antalLaddade * 50;
+            pil.y = 300 - windSpeedGraph[0] * 20;
+            pil.rotation = windDirectionGraph[0] - 225;
+
+            pil.scaleX = .5;
+            pil.scaleY = .5;
+            graph.addChild(pil);
+
+
+            for (var i = 1; i < antalLaddade * 50; i++) {
+
+                var pil = new createjs.Bitmap("./img/GrafDot2.png");
+                pil.regX = 25;
+                pil.regY = 25;
+                pil.x = (antalLaddade * 50) - (i * 50);
+                pil.y = 300 - windSpeedGraph[i] * 20;
+                pil.rotation = windDirectionGraph[i] - 225;
+                pil.scaleX = .5;
+                pil.scaleY = .5;
+                graph.addChild(pil);
+            }
+
+
+
+            graph.update();
+            var left = $('.x-scroll').width();
+
+            $('.x-scroll, html').scrollLeft(antalLaddade * 50);
 
 
         },
