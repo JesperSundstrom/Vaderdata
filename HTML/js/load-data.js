@@ -1,5 +1,6 @@
 var windSpeedGraph = [];
 var windDirectionGraph = [];
+var latestUpdateGraph = [];
 
 $(document).ready(function () {
     // Send an AJAX request
@@ -186,11 +187,11 @@ $(document).ready(function () {
 
 
 
-
+                var tiden = String(item.lastUpdate).substring(12, 17);
 
                 windSpeedGraph.push(item.windSpeed);
                 windDirectionGraph.push(item.windDirection);
-
+                latestUpdateGraph.push(tiden)
 
 
 
@@ -198,7 +199,7 @@ $(document).ready(function () {
 
             windSpeedGraph.reverse();
             windDirectionGraph.reverse();
-
+            latestUpdateGraph.reverse();
 
             graph(15);
         },
@@ -212,20 +213,35 @@ $(document).ready(function () {
     });
 });
 
+
+function reporter() {
+    graph(($("#range-1a").val()));
+}
+
+
+$(function () {
+    function log(message) {
+        $("<div/>").text(message).prependTo("#log");
+        $("#log").attr("scrollTop", 0);
+    }
+    // window.setTimeout(reporter, 1000); 
+
+});
+    $("#myRange").on("change", reporter);
+
 function graph(value) {
     var graph = new createjs.Stage("graph");
     var canvas = document.getElementById("graph");
 
     var antalLaddade = value * 50;
+    var zoom = 40;
 
     var line = new createjs.Shape();
     line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-    line.graphics.moveTo(antalLaddade, 300 - windSpeedGraph[0] * 20);
-
-    canvas.width = (antalLaddade + 30);
+    line.graphics.moveTo(antalLaddade, 300 - windSpeedGraph[0] * zoom);
 
     for (var i = 1; i < antalLaddade; i++) {
-        line.graphics.lineTo(antalLaddade - (i * 50), 300 - windSpeedGraph[i] * 20);
+        line.graphics.lineTo(antalLaddade - (i * 50), 300 - windSpeedGraph[i] * zoom);
     }
 
     line.graphics.endStroke();
@@ -234,7 +250,7 @@ function graph(value) {
     pil.regX = 25;
     pil.regY = 25;
     pil.x = antalLaddade;
-    pil.y = 300 - windSpeedGraph[0] * 20;
+    pil.y = 300 - windSpeedGraph[0] * zoom;
     pil.rotation = windDirectionGraph[0] - 225;
     pil.scaleX = .5;
     pil.scaleY = .5;
@@ -245,7 +261,7 @@ function graph(value) {
         pil.regX = 25;
         pil.regY = 25;
         pil.x = antalLaddade - (i * 50);
-        pil.y = 300 - windSpeedGraph[i] * 20;
+        pil.y = 300 - windSpeedGraph[i] * zoom;
         pil.rotation = windDirectionGraph[i] - 225;
         pil.scaleX = .5;
         pil.scaleY = .5;
