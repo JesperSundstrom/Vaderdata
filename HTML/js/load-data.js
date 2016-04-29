@@ -213,3 +213,78 @@ $(document).ready(function () {
     });
 });
 
+function reporter() {
+    graph($("#width").val());
+}
+$("#width").on("change", reporter);
+
+function graph(value) {
+
+    var graph = new createjs.Stage("graph");
+    var canvas = document.getElementById("graph");
+
+    var antalLaddade = value * 50;
+
+    var line = new createjs.Shape();
+    line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
+    line.graphics.moveTo(antalLaddade, 300 - windSpeedGraph[0] * 20);
+
+    canvas.width = (antalLaddade + 30);
+
+    for (var i = 1; i < antalLaddade; i++) {
+        line.graphics.lineTo(antalLaddade - (i * 50), 300 - windSpeedGraph[i] * 20);
+    }
+
+    line.graphics.endStroke();
+    graph.addChild(line);
+    var pil = new createjs.Bitmap("./img/GrafDot2.png");
+    pil.regX = 25;
+    pil.regY = 25;
+    pil.x = antalLaddade;
+    pil.y = 300 - windSpeedGraph[0] * 20;
+    pil.rotation = windDirectionGraph[0] - 225;
+    pil.scaleX = .5;
+    pil.scaleY = .5;
+    graph.addChild(pil);
+
+    var valueText = new createjs.Text(windSpeedGraph[0], "13px 'Lato'", "#000000");
+    var b = valueText.getBounds();
+    valueText.x = antalLaddade - (0 * 50) - 10;
+    valueText.y = 325 - windSpeedGraph[0] * 20;
+    valueText.textBaseline = "alphabetic";
+    graph.addChild(valueText);
+
+
+
+    for (var i = 1; i < antalLaddade ; i++) {
+
+        var pil = new createjs.Bitmap("./img/GrafDot2.png");
+        pil.regX = 25;
+        pil.regY = 25;
+        pil.x = antalLaddade - (i * 50);
+        pil.y = 300 - windSpeedGraph[i] * 20;
+        pil.rotation = windDirectionGraph[i] - 225;
+        pil.scaleX = .5;
+        pil.scaleY = .5;
+        graph.addChild(pil);
+
+        console.log(windSpeedGraph[i]);
+        var valueText = new createjs.Text(windSpeedGraph[i], "13px 'Lato'", "#000000");
+        var b = valueText.getBounds();
+        valueText.x = antalLaddade - (i * 50) - 10;
+        valueText.y = 325 - windSpeedGraph[i] * 20;
+        valueText.textBaseline = "alphabetic";
+        graph.addChild(valueText);
+
+    }
+
+
+
+    graph.update();
+    var left = $('.x-scroll').width();
+
+    $('.x-scroll, html').scrollLeft(antalLaddade);
+
+
+
+}
