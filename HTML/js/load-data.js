@@ -212,8 +212,13 @@ $(document).ready(function () {
     });
 });
 
+
+function reporter() {
+    graph($("#width").val());
+}
+    $("#width").on("change", reporter);
+
 function graph(value) {
-    var x = document.getElementById("#weight").value;
 
     var graph = new createjs.Stage("graph");
     var canvas = document.getElementById("graph");
@@ -241,6 +246,16 @@ function graph(value) {
     pil.scaleX = .5;
     pil.scaleY = .5;
     graph.addChild(pil);
+
+    var valueText = new createjs.Text(windSpeedGraph[0], "13px 'Lato'", "#000000");
+    var b = valueText.getBounds();
+    valueText.x = antalLaddade - (0 * 50) - 10;
+    valueText.y = 325 - windSpeedGraph[0] * 20;
+    valueText.textBaseline = "alphabetic";
+    graph.addChild(valueText);
+
+
+
     for (var i = 1; i < antalLaddade ; i++) {
 
         var pil = new createjs.Bitmap("./img/GrafDot2.png");
@@ -252,6 +267,15 @@ function graph(value) {
         pil.scaleX = .5;
         pil.scaleY = .5;
         graph.addChild(pil);
+
+        console.log(windSpeedGraph[i]);
+        var valueText = new createjs.Text(windSpeedGraph[i], "13px 'Lato'", "#000000");
+        var b = valueText.getBounds();
+        valueText.x = antalLaddade - (i * 50) - 10;
+        valueText.y = 325 - windSpeedGraph[i] * 20;
+        valueText.textBaseline = "alphabetic";
+        graph.addChild(valueText);
+
     }
 
 
