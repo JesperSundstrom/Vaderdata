@@ -206,16 +206,19 @@ $(document).ready(function () {
 
             var canvas = document.getElementById("graph");
 
-            var antalLaddade = 50;
+            var antalLaddade = 50 * 50;
 
             var line = new createjs.Shape();
             line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-            line.graphics.moveTo(antalLaddade * 50, 300 - windSpeedGraph[0] * 20);
+            line.graphics.moveTo(antalLaddade, 300 - windSpeedGraph[0] * 20);
 
+            canvas.width = (antalLaddade +30);
 
             for (var i = 1; i < antalLaddade; i++) {
-                line.graphics.lineTo(antalLaddade * 50 - (i * 50), 300 - windSpeedGraph[i] * 20);
-                canvas.width = (antalLaddade * 50);
+                line.graphics.lineTo(antalLaddade - (i * 50), 300 - windSpeedGraph[i] * 20);
+                
+
+
 
             }
 
@@ -226,7 +229,7 @@ $(document).ready(function () {
             var pil = new createjs.Bitmap("./img/GrafDot2.png");
             pil.regX = 25;
             pil.regY = 25;
-            pil.x = antalLaddade * 50;
+            pil.x = antalLaddade;
             pil.y = 300 - windSpeedGraph[0] * 20;
             pil.rotation = windDirectionGraph[0] - 225;
 
@@ -235,12 +238,12 @@ $(document).ready(function () {
             graph.addChild(pil);
 
 
-            for (var i = 1; i < antalLaddade * 50; i++) {
+            for (var i = 1; i < antalLaddade ; i++) {
 
                 var pil = new createjs.Bitmap("./img/GrafDot2.png");
                 pil.regX = 25;
                 pil.regY = 25;
-                pil.x = (antalLaddade * 50) - (i * 50);
+                pil.x = antalLaddade - (i * 50);
                 pil.y = 300 - windSpeedGraph[i] * 20;
                 pil.rotation = windDirectionGraph[i] - 225;
                 pil.scaleX = .5;
@@ -253,7 +256,7 @@ $(document).ready(function () {
             graph.update();
             var left = $('.x-scroll').width();
 
-            $('.x-scroll, html').scrollLeft(antalLaddade * 50);
+            $('.x-scroll, html').scrollLeft(antalLaddade);
 
 
         },
