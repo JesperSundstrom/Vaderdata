@@ -213,6 +213,8 @@ $(document).ready(function () {
 });
 
 function graph(value) {
+    var x = document.getElementById("#weight").value;
+
     var graph = new createjs.Stage("graph");
     var canvas = document.getElementById("graph");
 
