@@ -214,9 +214,9 @@ $(document).ready(function () {
 });
 
 function reporter() {
-    graph($("#width").val());
+    graph($("#range-1a").val());
 }
-$("#width").on("change", reporter);
+$("#myRange").on("change", reporter);
 
 function graph(value) {
 
@@ -254,6 +254,12 @@ function graph(value) {
     valueText.textBaseline = "alphabetic";
     graph.addChild(valueText);
 
+    var valueText = new createjs.Text(latestUpdateGraph[0], "13px 'Lato'", "#000000");
+    var b = valueText.getBounds();
+    valueText.x = antalLaddade - (0 * 50) - 10;
+    valueText.y = 380;
+    valueText.textBaseline = "alphabetic";
+    graph.addChild(valueText);
 
 
     for (var i = 1; i < antalLaddade ; i++) {
@@ -268,11 +274,18 @@ function graph(value) {
         pil.scaleY = .5;
         graph.addChild(pil);
 
-        console.log(windSpeedGraph[i]);
         var valueText = new createjs.Text(windSpeedGraph[i], "13px 'Lato'", "#000000");
         var b = valueText.getBounds();
         valueText.x = antalLaddade - (i * 50) - 10;
         valueText.y = 325 - windSpeedGraph[i] * 20;
+        valueText.textBaseline = "alphabetic";
+        graph.addChild(valueText);
+
+
+        var valueText = new createjs.Text(latestUpdateGraph[i], "13px 'Lato'", "#000000");
+        var b = valueText.getBounds();
+        valueText.x = antalLaddade - (i * 50) - 10;
+        valueText.y = 380;
         valueText.textBaseline = "alphabetic";
         graph.addChild(valueText);
 

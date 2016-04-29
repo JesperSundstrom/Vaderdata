@@ -58,25 +58,23 @@
             </div>
 
 
-            <div class="x-scoll dragscroll">
+            <div class="x-scroll dragscroll">
 
-                <canvas class="" id="graph" width="700" height="400" style=" border : 3px solid tomato;"></canvas>
+                <canvas class="" id="graph" width="700" height="400" ></canvas>
 
             </div>
 
-        <h1>Personal connoisseur</h1>
 
         <div class="ui-widget">
+            <div style="text-align:center;"id="myRange" data-role="rangeslider">
+                <p>Dra med fingret eller pekaren för att se historik</p>
 
-            <div id="myRange" data-role="rangeslider">
-                <label for="range-1a">Prisintervall:</label>
-                <input name="range-1a" id="range-1a" min="0" max="20" value="1" type="range">
+                <label for="range-1a">intervall</label>
+                <br />
+                <input name="range-1a" id="range-1a" min="10" max="30" value="1" type="range">
             </div>
 
-            <div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-                Resultat:
-                <div id="log" style="height: 200px; width: 100%; overflow: auto;" class="ui-widget-content"></div>
-            </div>
+           
         </div>
             <div class="section group">
                 <img src="img/GrafDot2.png" style="display:none;" alt="" />
