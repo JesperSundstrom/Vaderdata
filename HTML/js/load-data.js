@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get',
+        url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get?value=10',
         dataType: 'json',
         type: 'get',
         cache: false,
@@ -201,7 +201,7 @@ $(document).ready(function () {
             windDirectionGraph.reverse();
             latestUpdateGraph.reverse();
 
-            graph(15);
+            graph(10);
         },
 
         error: function (data) {

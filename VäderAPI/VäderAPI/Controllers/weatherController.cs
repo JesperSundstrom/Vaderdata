@@ -18,11 +18,16 @@ namespace VäderAPI.Controllers
 
         public VäderAPIContext db = new VäderAPIContext();
 
-        public IEnumerable<weather> Get()
+        public IEnumerable<weather> Get(int value)
         {
-            var db = new VäderAPIContext();
 
-            return db.weathers.ToList();
+                var db = new VäderAPIContext();
+
+           
+                return db.weathers.ToList().OrderByDescending(x => x.Id).Take(value).Reverse();
+
+
+            
         }
 
         public IEnumerable<weather> UpdateDatabase()
