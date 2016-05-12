@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     $.ajax({
-        url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get?value=10',
+        url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get?value=20',
         dataType: 'json',
         type: 'get',
         cache: false,
