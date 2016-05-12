@@ -62,7 +62,7 @@ namespace VäderAPI.Controllers
             db.SaveChanges();
 
 
-
+            
             return db.weathers.ToList();
         }
 
