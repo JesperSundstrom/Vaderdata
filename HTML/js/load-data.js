@@ -220,7 +220,7 @@ $("#myRange").on("change", reporter);
 
 function graph(value) {
 
-    var zoom = 70;
+    var zoom = 20;
 
     var graph = new createjs.Stage("graph");
     var canvas = document.getElementById("graph");
