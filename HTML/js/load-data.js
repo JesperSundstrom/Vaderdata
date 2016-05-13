@@ -201,7 +201,7 @@ $(document).ready(function () {
             windDirectionGraph.reverse();
             latestUpdateGraph.reverse();
 
-            graph(10);
+            reporter();
         },
 
         error: function (data) {
@@ -263,18 +263,20 @@ function graph(value) {
     valueText.textBaseline = "alphabetic";
     graph.addChild(valueText);
 
+       
 
-    for (var i = 1; i < antalLaddade ; i++) {
 
-        var pil = new createjs.Bitmap("./img/GrafDot2.png");
-        pil.regX = 25;
-        pil.regY = 25;
-        pil.x = antalLaddade - (i * 50);
-        pil.y = 300 - windSpeedGraph[i] * zoom;
-        pil.rotation = windDirectionGraph[i] - 225;
-        pil.scaleX = .5;
-        pil.scaleY = .5;
-        graph.addChild(pil);
+    for (var i = 1; i < windSpeedGraph.length; i++) {
+        var pil2 = new createjs.Bitmap("./img/GrafDot2.png");
+        pil2.regX = 25;
+        pil2.regY = 25;
+        pil2.scaleX = .5;
+        pil2.scaleY = .5;
+        pil2.x = antalLaddade - (i * 50);
+        pil2.y = 300 - windSpeedGraph[i] * zoom;
+        pil2.rotation = windDirectionGraph[i] - 225;
+        
+        graph.addChild(pil2);
 
         var valueText = new createjs.Text(windSpeedGraph[i] +" m/s", "10px 'Lato'", "#000000");
         var b = valueText.getBounds();
