@@ -243,6 +243,11 @@ ul {
     width: 590px;
     margin-bottom: 10px;
 }
+#graphContainer{
+    position:relative;
+    margin:0 auto;
+    text-align:center;
+}
 
     .graph-info a {
         position: relative;
@@ -360,6 +365,7 @@ line-height:40px;
 position:relative;
 background-color:#c0dcdf;
 border-radius:7px;
+cursor:pointer;
     box-shadow: #173A3E 0px 3px 3px 0px;
 }
     .timeSelect div p{
