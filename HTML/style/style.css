@@ -338,3 +338,16 @@ ul {
     padding: 5px 10px;
     border: 1px solid #e1e1e1;
 }
+.timeSelect{
+    background:tomato;
+    display:inline-block;
+    width:200px;
+}
+.timeSelect div{
+    display:inline-block;
+    margin:0;
+width:32%;
+}
+.selected{
+    background-color:red;
+}
