@@ -241,7 +241,7 @@ function graph(value) {
     line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
     line.graphics.moveTo(antalLaddade, 300 - windSpeedGraph[0] * zoom);
 
-    canvas.width = (antalLaddade + 30);
+    //canvas.width = (antalLaddade + 30);
 
     for (var i = 1; i < antalLaddade; i++) {
         line.graphics.lineTo(antalLaddade - (i * 50), 300 - windSpeedGraph[i] * zoom);
@@ -308,9 +308,7 @@ function graph(value) {
 
 
     graph.update();
-    var left = $('.x-scroll').width();
 
-    $('.x-scroll, html').scrollLeft(antalLaddade);
 
 
 
