@@ -214,7 +214,16 @@ $(document).ready(function () {
 });
 
 function select(timespan) {
-    $('.timeSelect').find('div');
+
+  
+
+
+
+    $('.timeSelect').on('click', 'div', function () {
+        $('.timeSelect div').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
 
     graph(timespan*5);
 }

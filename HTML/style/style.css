@@ -338,16 +338,31 @@ ul {
     padding: 5px 10px;
     border: 1px solid #e1e1e1;
 }
+.selected{
+    background-color:white !important;
+                box-shadow: #173A3E 0px 2px 2px 0px !important;
+
+}
 .timeSelect{
-    background:tomato;
+    position:relative;
     display:inline-block;
     width:200px;
+    color:#173A3E;
+    text-align:center;
+    margin:0 auto;
 }
 .timeSelect div{
     display:inline-block;
     margin:0;
 width:32%;
+height:40px;
+line-height:40px;
+position:relative;
+background-color:#c0dcdf;
+border-radius:7px;
+    box-shadow: #173A3E 0px 3px 3px 0px;
 }
-.selected{
-    background-color:red;
-}
+    .timeSelect div p{
+        position:relative;
+        color:#173A3E;
+    }
