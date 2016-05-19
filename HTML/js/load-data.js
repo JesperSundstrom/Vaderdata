@@ -201,7 +201,7 @@ $(document).ready(function () {
             windDirectionGraph.reverse();
             latestUpdateGraph.reverse();
 
-            reporter();
+            select(2);
         },
 
         error: function (data) {
@@ -213,10 +213,11 @@ $(document).ready(function () {
     });
 });
 
-function reporter() {
-    graph($("#range-1a").val());
+function select(timespan) {
+    $('.timeSelect').find('div');
+
+    graph(timespan*5);
 }
-$("#myRange").on("change", reporter);
 
 function graph(value) {
 
