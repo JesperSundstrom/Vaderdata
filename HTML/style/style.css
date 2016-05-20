@@ -39,6 +39,13 @@ p {
 cursor:move;
 
 }
+@media only screen and (min-width : 700px) {  
+  .dragscroll{
+cursor:default;
+
+}
+
+}
 .x-scroll {
     margin: 0 auto;
     position: relative;
@@ -46,7 +53,7 @@ cursor:move;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    max-width: 550px;
+    max-width: 700px;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     text-align: center;

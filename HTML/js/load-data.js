@@ -31,6 +31,7 @@ $(document).ready(function () {
 
                 var speed = item.windSpeed;
                 var canvas = new createjs.Stage("compass");
+                canvas.enableDOMEvents(false);
 
                 var compass = new createjs.Bitmap("./img/compass.png");
                 compass.scaleX = .5;
@@ -227,14 +228,18 @@ function select(timespan) {
     });
 
 
-    graph(timespan);
+    graph2(timespan);
 }
+var graph = new createjs.Stage("graph");
 
-function graph(selectedTime) {
+function graph2(selectedTime) {
 
     var bredd = selectedTime / 2.4;
     var zoom = 20;
-    var graph = new createjs.Stage("graph");
+    graph.removeAllChildren();
+    graph.enableDOMEvents(false);
+
+
     var canvas = document.getElementById("graph");
     var canvasWidth = canvas.clientWidth;
 
@@ -325,7 +330,9 @@ function graph(selectedTime) {
 
 
     graph.update();
+    var left = $('.x-scroll').width();
 
+    $('.x-scroll, html').scrollLeft(antalLaddade);
 
 
 
