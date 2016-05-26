@@ -1,10 +1,10 @@
 var windSpeedGraph = [];
 var windDirectionGraph = [];
 var latestUpdateGraph = [];
-var maxY = null;
-var minY = null;
+
 $(document).ready(function () {
     // Send an AJAX request
+
 
     $.ajax({
         url: 'http://infomedia.orebro.se/v%C3%A4derdata/api/weather/get?value=20',
@@ -145,16 +145,13 @@ $(document).ready(function () {
 
                 //VattenTemp
                 var waterTemp = parseInt(item.waterTemp);
-                var tempHeight = waterTemp + 10; 
+                var tempHeight = waterTemp + 5;
                 var canvasWaterTemp = new createjs.Stage("waterTemp");
 
                 var rect = new createjs.Shape();
                 rect.graphics.beginFill("#c0dcdf").drawRect(32, 169 - ((46 * 3.5) + 1), 34, (46 * 3.5) + 1);
-                rect.graphics.beginFill("#c0dcdf").drawRect(32, 169 - ((46 * 3.5) + 1), 34, (46 * 3.5) + 1);
-                rect.graphics.beginFill("#7dcbdc").drawRect(32, 169 - ((Math.min(tempHeight, 46) * 3.5) + 1), 34, (Math.min(tempHeight, 46) * 3.5) + 1);
-
-                //rect.graphics.beginFill("#7dcbdc").drawRect(32, 169 - ((Math.min(tempHeight, 35) * 4.5) + 1), 34, (Math.min(tempHeight, 35) * 4.5) + 1);
-                //rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
+                rect.graphics.beginFill("#7dcbdc").drawRect(32, 169 - ((Math.min(tempHeight, 35) * 4.5) + 1), 34, (Math.min(tempHeight, 35) * 4.5) + 1);
+                rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
                 canvasWaterTemp.addChild(rect);
 
                 var circles = new createjs.Bitmap("./img/drop.png");
@@ -190,21 +187,23 @@ $(document).ready(function () {
 
 
 
-                var tiden = String(item.lastUpdate).substring(12, 17);
-                maxY = Math.max(maxY, item.windSpeed);
-                minY = Math.min(minY, item.windSpeed);
 
+                var tiden = String(item.lastUpdate).substring(12, 17);
+
+                //windSpeedGraph.push(Math.round(Math.random() * 20));
                 windSpeedGraph.push(item.windSpeed);
                 windDirectionGraph.push(item.windDirection);
-                latestUpdateGraph.push(tiden);
+                latestUpdateGraph.push(tiden)
+
+
 
             })
-            //windSpeedGraph.push(10, 9, 13, 11, 12, 13, 10, 9, 13, 11, 30, 13, 13, 9, 13, 11, 12, 13);
-            //maxY = 30;
-            //minY =9;
+            //windSpeedGraph.push(10, 2);
+
             windSpeedGraph.reverse();
             windDirectionGraph.reverse();
             latestUpdateGraph.reverse();
+
             select(2);
         },
 
@@ -234,8 +233,7 @@ function select(timespan) {
 var graph = new createjs.Stage("graph");
 
 function graph2(selectedTime) {
-    var yOffset = maxY * 20 + 20;
-    var heightDifference = maxY - minY * 20 + yOffset;
+
     var bredd = selectedTime / 2.4;
     var zoom = 20;
     graph.removeAllChildren();
@@ -243,33 +241,51 @@ function graph2(selectedTime) {
 
 
     var canvas = document.getElementById("graph");
-    var canvasHeight = yOffset;
-    canvas.height = heightDifference + 80;
-    console.log(canvasHeight + ' height canvas');
     var canvasWidth = canvas.clientWidth;
 
     var canvasPadding = 50;
     var antalLaddade = canvasWidth - canvasPadding;
-    
 
     var line = new createjs.Shape();
     line.graphics.setStrokeStyle(3).beginStroke("#173A3E");
-    line.graphics.moveTo(((selectedTime * 6 - 1) * (antalLaddade / (selectedTime * 6 - 1))) + canvasPadding / 2, canvasHeight - windSpeedGraph[0] * zoom);
+    line.graphics.moveTo(((selectedTime * 6 - 1) * (antalLaddade / (selectedTime * 6 - 1))) + canvasPadding / 2, 300 - windSpeedGraph[0] * zoom);
+
     //canvas.width = (antalLaddade + 30);
 
-    //if (difference ) {
-
-    //}
-
     for (var i = 1; i < (selectedTime * 6) ; i++) {
-        line.graphics.lineTo(antalLaddade - (i * (antalLaddade / (selectedTime * 6 - 1))) + canvasPadding / 2, canvasHeight - windSpeedGraph[i] * zoom);
-
+        line.graphics.lineTo(antalLaddade - (i * (antalLaddade / (selectedTime * 6 - 1))) + canvasPadding / 2, 300 - windSpeedGraph[i] * zoom);
     }
 
+    console.log((selectedTime * 6), "times", antalLaddade, "width")
 
     line.graphics.endStroke();
     graph.addChild(line);
 
+    //var pil = new createjs.Bitmap("./img/GrafDot2.png");
+    //pil.regX = 25;
+    //pil.regY = 25;
+    //pil.x = antalLaddade;
+    //pil.y = 300 - windSpeedGraph[0] * zoom;
+    //pil.rotation = windDirectionGraph[0] - 225;
+    //pil.scaleX = .5;
+    //pil.scaleY = .5;
+    //graph.addChild(pil);
+
+    //var valueText = new createjs.Text(windSpeedGraph[0] + " m/s", "10px 'Lato'", "#000000");
+    //var b = valueText.getBounds();
+    //valueText.x = antalLaddade - (0 * 50) - 20;
+    //valueText.y = 325 - windSpeedGraph[0] * zoom;
+    //valueText.textBaseline = "alphabetic";
+    //graph.addChild(valueText);
+
+    //var valueText = new createjs.Text(latestUpdateGraph[0], "13px 'Lato'", "#000000");
+    //var b = valueText.getBounds();
+    //valueText.x = antalLaddade - (0 * 50) - 10;
+    //valueText.y = 380;
+    //valueText.textBaseline = "alphabetic";
+    //graph.addChild(valueText);
+
+    var maxY = 0;
     for (var i = 0; i < selectedTime * 6; i++) {
         var pil2 = new createjs.Bitmap("./img/GrafDot2.png");
         pil2.regX = 25;
@@ -281,8 +297,11 @@ function graph2(selectedTime) {
         //line.graphics.lineTo(antalLaddade - (i * (antalLaddade / (selectedTime * 6 - 1))) + canvasPadding / 2, 300 - windSpeedGraph[i] * zoom);
 
 
-        pil2.y = canvasHeight - windSpeedGraph[i] * zoom;
+        pil2.y = 300 - windSpeedGraph[i] * zoom;
+        maxY = Math.max(maxY, pil2.y);
+
         pil2.rotation = windDirectionGraph[i] - 225;
+
         graph.addChild(pil2);
 
         var valueText = new createjs.Text(windSpeedGraph[i] + " m/s", "10px 'Lato'", "#000000");
@@ -293,7 +312,7 @@ function graph2(selectedTime) {
         valueText.rotation = 22.5;
 
 
-        valueText.y = canvasHeight+ 27 - windSpeedGraph[i] * zoom;
+        valueText.y = 325 - windSpeedGraph[i] * zoom;
         valueText.textBaseline = "alphabetic";
         graph.addChild(valueText);
 
@@ -302,10 +321,11 @@ function graph2(selectedTime) {
         var b = valueText.getBounds();
         //valueText.x = antalLaddade - (i * 50 / bredd) - 10;
         valueText.x = pil2.x - b.width / 2;
-        valueText.y = heightDifference + 60;
+        valueText.y = 380;
 
         valueText.textBaseline = "alphabetic";
         graph.addChild(valueText);
+
     }
 
 

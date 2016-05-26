@@ -33,7 +33,7 @@ $(document).ready(function () {
                 var canvas = new createjs.Stage("compass");
                 canvas.enableDOMEvents(false);
 
-                var compass = new createjs.Bitmap("./img/compass.png");
+                var compass = new createjs.Bitmap("väderdata/img/compass.png");
                 compass.scaleX = .5;
                 compass.scaleY = .5;
                 //compass.y = 125;
@@ -47,7 +47,7 @@ $(document).ready(function () {
                 //    .to({ rotation: - direction - 1 }, 2500, createjs.Ease.getPowInOut(2))
                 //    .to({ rotation: - direction + 1 }, 2500, createjs.Ease.getPowInOut(2));
 
-                var needle = new createjs.Bitmap("./img/needle.png");
+                var needle = new createjs.Bitmap("väderdata/img/needle.png");
                 needle.y = 125;
                 needle.x = 125;
                 needle.regX = 125;
@@ -60,7 +60,7 @@ $(document).ready(function () {
                     .to({ rotation: direction + 1 }, 700, createjs.Ease.getPowInOut(2))
                     .to({ rotation: direction - 1 }, 1000, createjs.Ease.getPowInOut(2));
 
-                var circles = new createjs.Bitmap("./img/Bubbles.png");
+                var circles = new createjs.Bitmap("väderdata/img/Bubbles.png");
                 circles.scaleX = .5;
                 circles.scaleY = .5;
                 canvas.addChild(circles);
@@ -113,7 +113,7 @@ $(document).ready(function () {
                 rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
                 canvasAirTemp.addChild(rect);
 
-                var circles = new createjs.Bitmap("./img/cloud.png");
+                var circles = new createjs.Bitmap("väderdata/img/cloud.png");
                 circles.scaleX = .6;
                 circles.scaleY = .7;
                 circles.x = 20;
@@ -127,13 +127,13 @@ $(document).ready(function () {
                 value.textBaseline = "alphabetic";
                 canvasAirTemp.addChild(value);
 
-                var circles = new createjs.Bitmap("./img/Temp.png");
+                var circles = new createjs.Bitmap("väderdata/img/Temp.png");
                 circles.x = -75;
                 circles.scaleX = .5;
                 circles.scaleY = .5;
                 canvasAirTemp.addChild(circles);
 
-                var circles = new createjs.Bitmap("./img/Temp-Streck.png");
+                var circles = new createjs.Bitmap("väderdata/img/Temp-Streck.png");
                 circles.x = -75;
                 circles.scaleX = .5;
                 circles.scaleY = .5;
@@ -157,7 +157,7 @@ $(document).ready(function () {
                 //rect.graphics.beginFill("#7dcbdc").drawCircle(50, 206, 40);
                 canvasWaterTemp.addChild(rect);
 
-                var circles = new createjs.Bitmap("./img/drop.png");
+                var circles = new createjs.Bitmap("väderdata/img/drop.png");
                 circles.scaleX = .6;
                 circles.scaleY = .6;
                 circles.x = 20;
@@ -171,13 +171,13 @@ $(document).ready(function () {
                 value.textBaseline = "alphabetic";
                 canvasWaterTemp.addChild(value);
 
-                var circles = new createjs.Bitmap("./img/Temp.png");
+                var circles = new createjs.Bitmap("väderdata/img/Temp.png");
                 circles.x = -75;
                 circles.scaleX = .5;
                 circles.scaleY = .5;
                 canvasWaterTemp.addChild(circles);
 
-                var circles = new createjs.Bitmap("./img/Temp-Streck.png");
+                var circles = new createjs.Bitmap("väderdata/img/Temp-Streck.png");
                 circles.x = -75;
                 circles.scaleX = .5;
                 circles.scaleY = .5;
@@ -271,7 +271,7 @@ function graph2(selectedTime) {
     graph.addChild(line);
 
     for (var i = 0; i < selectedTime * 6; i++) {
-        var pil2 = new createjs.Bitmap("./img/GrafDot2.png");
+        var pil2 = new createjs.Bitmap("väderdata/img/GrafDot2.png");
         pil2.regX = 25;
         pil2.regY = 25;
         pil2.scaleX = .5;
