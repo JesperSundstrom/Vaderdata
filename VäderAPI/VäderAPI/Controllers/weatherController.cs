@@ -29,7 +29,6 @@ namespace VäderAPI.Controllers
 
             
         }
-
         public IEnumerable<weather> UpdateDatabase()
         {
             var db = new VäderAPIContext();
